@@ -1,18 +1,20 @@
 #include <SDL.h>
 #include <stdio.h>
 
+SDL_Window* gWindow = NULL;
+SDL_Surface* gScreenSurface = NULL;
+SDL_Surface* gHelloWorld = NULL;
+
 bool init();
 
 bool loadMedia();
 
 void close();
 
-SDL_Window* gWindow = NULL;
-SDL_Surface* gScreenSurface = NULL;
-SDL_Surface* gHelloWorld = NULL;
+
 
 const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 400;
+const int SCREEN_HEIGHT = 480;
 
 
 bool init()
@@ -54,7 +56,7 @@ bool loadMedia()
 
 void close()
 {
-	SDL_Surface(gHellowWorld);
+	SDL_FreeSurface(gHelloWorld);
 	gHelloWorld = NULL;
 
 	SDL_DestroyWindow(gWindow);
@@ -81,7 +83,7 @@ int main(int argc, char* args[])
 		{
 			SDL_BlitSurface(gHelloWorld, NULL, gScreenSurface, NULL);
 			SDL_UpdateWindowSurface(gWindow);
-			SDL_Delay(2000);
+			SDL_Delay(3000);
 		}
 	}
 	close();
