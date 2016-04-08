@@ -147,9 +147,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Breakout.cpp" />
+    <ClCompile Include="Breakout_OnInit.cpp" />
+    <ClCompile Include="Breakout_OnEvent..cpp" />
+    <ClCompile Include="Breakout_OnLoop.cpp" />
+    <ClCompile Include="Breakout_OnRender.cpp" />
+    <ClCompile Include="Breakout_OnCleanup.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Breakout.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Setup.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
