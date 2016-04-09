@@ -152,6 +152,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\..\Downloads\04_key_presses\04_key_presses\down.bmp" />
+    <Image Include="..\..\..\..\..\Downloads\04_key_presses\04_key_presses\left.bmp" />
+    <Image Include="..\..\..\..\..\Downloads\04_key_presses\04_key_presses\press.bmp" />
+    <Image Include="..\..\..\..\..\Downloads\04_key_presses\04_key_presses\right.bmp" />
+    <Image Include="..\..\..\..\..\Downloads\04_key_presses\04_key_presses\up.bmp" />
     <Image Include="hello_world.bmp" />
     <Image Include="x.bmp" />
   </ItemGroup>

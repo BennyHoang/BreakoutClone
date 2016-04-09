@@ -29,5 +29,20 @@
     <Image Include="x.bmp">
       <Filter>Source Files</Filter>
     </Image>
+    <Image Include="..\..\..\..\..\Downloads\04_key_presses\04_key_presses\down.bmp">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Downloads\04_key_presses\04_key_presses\left.bmp">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Downloads\04_key_presses\04_key_presses\press.bmp">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Downloads\04_key_presses\04_key_presses\right.bmp">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Downloads\04_key_presses\04_key_presses\up.bmp">
+      <Filter>Source Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
