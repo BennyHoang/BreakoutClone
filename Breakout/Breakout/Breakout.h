@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string>
 #include "Square.h"
+#include "TextService.h"
 #include <cmath>
 
 #define SCREEN_WIDTH 1024
@@ -28,6 +29,8 @@ private:
 	Square firkant1;
 	Square firkant2;
 	Square firkant3;
+
+	TextService text1;
 
 	bool once = false;
 
