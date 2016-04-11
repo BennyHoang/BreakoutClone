@@ -1,387 +1,189 @@
-/*This source code copyrighted by Lazy Foo' Productions (2004-2015)
-and may not be redistributed without written permission.*/
-
-//Using SDL, SDL_image, SDL_ttf, standard IO, math, and strings
 #include <SDL.h>
-#include <SDL_image.h>
 #include <SDL_ttf.h>
-#include <stdio.h>
-#include <string>
-#include <cmath>
 
-//Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+#include <iostream>
 
-//Texture wrapper class
-class LTexture
-{
-public:
-	//Initializes variables
-	LTexture();
+//setup
+bool InitEverything();
+bool InitSDL();
+bool CreateWindow();
+bool CreateRenderer();
+void SetupRenderer();
 
-	//Deallocates memory
-	~LTexture();
+//setup TTF
+bool SetupTTF(const std::string &fontName);
+SDL_Texture* SurfaceToTexture(SDL_Surface* surf);
+void CreatTextTextures();
 
-	//Loads image at specified path
-	bool loadFromFile(std::string path);
+//update
+void Render();
+void RunGame();
 
-	//Creates image from font string
-	bool loadFromRenderedText(std::string textureText, SDL_Color textColor);
+//initializing variables for text rendering
 
-	//Deallocates texture
-	void free();
+TTF_Font* font;
+SDL_Color textColor = { 255,255,255,255 };
+SDL_Color backgroundColor = { 0,0,0,255 };
 
-	//Set color modulation
-	void setColor(Uint8 red, Uint8 green, Uint8 blue);
+SDL_Texture* solidTexture;
+SDL_Texture* blendedTexture;
+SDL_Texture* shadedTexture;
 
-	//Set blending
-	void setBlendMode(SDL_BlendMode blending);
+SDL_Rect solidRect;
+SDL_Rect blendedRect;
+SDL_Rect shadedRect;
 
-	//Set alpha modulation
-	void setAlpha(Uint8 alpha);
-
-	//Renders texture at given point
-	void render(int x, int y, SDL_Rect* clip = NULL, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE);
-
-	//Gets image dimensions
-	int getWidth();
-	int getHeight();
-
-private:
-	//The actual hardware texture
-	SDL_Texture* mTexture;
-
-	//Image dimensions
-	int mWidth;
-	int mHeight;
-};
-
-//Starts up SDL and creates window
-bool init();
-
-//Loads media
-bool loadMedia();
-
-//Frees media and shuts down SDL
-void close();
-
-//The window we'll be rendering to
-SDL_Window* gWindow = NULL;
-
-//The window renderer
-SDL_Renderer* gRenderer = NULL;
-
-//Globally used font
-TTF_Font *gFont = NULL;
-
-//Rendered texture
-LTexture gTextTexture;
-
-
-LTexture::LTexture()
-{
-	//Initialize
-	mTexture = NULL;
-	mWidth = 0;
-	mHeight = 0;
-}
-
-LTexture::~LTexture()
-{
-	//Deallocate
-	free();
-}
-
-bool LTexture::loadFromFile(std::string path)
-{
-	//Get rid of preexisting texture
-	free();
-
-	//The final texture
-	SDL_Texture* newTexture = NULL;
-
-	//Load image at specified path
-	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
-	if (loadedSurface == NULL)
-	{
-		printf("Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError());
-	}
-	else
-	{
-		//Color key image
-		SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0, 0xFF, 0xFF));
-
-		//Create texture from surface pixels
-		newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
-		if (newTexture == NULL)
-		{
-			printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
-		}
-		else
-		{
-			//Get image dimensions
-			mWidth = loadedSurface->w;
-			mHeight = loadedSurface->h;
-		}
-
-		//Get rid of old loaded surface
-		SDL_FreeSurface(loadedSurface);
-	}
-
-	//Return success
-	mTexture = newTexture;
-	return mTexture != NULL;
-}
-
-bool LTexture::loadFromRenderedText(std::string textureText, SDL_Color textColor)
-{
-	//Get rid of preexisting texture
-	free();
-
-	//Render text surface
-	SDL_Surface* textSurface = TTF_RenderText_Solid(gFont, textureText.c_str(), textColor);
-	if (textSurface == NULL)
-	{
-		printf("Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError());
-	}
-	else
-	{
-		//Create texture from surface pixels
-		mTexture = SDL_CreateTextureFromSurface(gRenderer, textSurface);
-		if (mTexture == NULL)
-		{
-			printf("Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError());
-		}
-		else
-		{
-			//Get image dimensions
-			mWidth = textSurface->w;
-			mHeight = textSurface->h;
-		}
-
-		//Get rid of old surface
-		SDL_FreeSurface(textSurface);
-	}
-
-	//Return success
-	return mTexture != NULL;
-}
-
-void LTexture::free()
-{
-	//Free texture if it exists
-	if (mTexture != NULL)
-	{
-		SDL_DestroyTexture(mTexture);
-		mTexture = NULL;
-		mWidth = 0;
-		mHeight = 0;
-	}
-}
-
-void LTexture::setColor(Uint8 red, Uint8 green, Uint8 blue)
-{
-	//Modulate texture rgb
-	SDL_SetTextureColorMod(mTexture, red, green, blue);
-}
-
-void LTexture::setBlendMode(SDL_BlendMode blending)
-{
-	//Set blending function
-	SDL_SetTextureBlendMode(mTexture, blending);
-}
-
-void LTexture::setAlpha(Uint8 alpha)
-{
-	//Modulate texture alpha
-	SDL_SetTextureAlphaMod(mTexture, alpha);
-}
-
-void LTexture::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
-{
-	//Set rendering space and render to screen
-	SDL_Rect renderQuad = { x, y, mWidth, mHeight };
-
-	//Set clip rendering dimensions
-	if (clip != NULL)
-	{
-		renderQuad.w = clip->w;
-		renderQuad.h = clip->h;
-	}
-
-	//Render to screen
-	SDL_RenderCopyEx(gRenderer, mTexture, clip, &renderQuad, angle, center, flip);
-}
-
-int LTexture::getWidth()
-{
-	return mWidth;
-}
-
-int LTexture::getHeight()
-{
-	return mHeight;
-}
-
-bool init()
-{
-	//Initialization flag
-	bool success = true;
-
-	//Initialize SDL
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
-	{
-		printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
-		success = false;
-	}
-	else
-	{
-		//Set texture filtering to linear
-		if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1"))
-		{
-			printf("Warning: Linear texture filtering not enabled!");
-		}
-
-		//Create window
-		gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-		if (gWindow == NULL)
-		{
-			printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
-			success = false;
-		}
-		else
-		{
-			//Create vsynced renderer for window
-			gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-			if (gRenderer == NULL)
-			{
-				printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
-				success = false;
-			}
-			else
-			{
-				//Initialize renderer color
-				SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-
-				//Initialize PNG loading
-				int imgFlags = IMG_INIT_PNG;
-				if (!(IMG_Init(imgFlags) & imgFlags))
-				{
-					printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
-					success = false;
-				}
-
-				//Initialize SDL_ttf
-				if (TTF_Init() == -1)
-				{
-					printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
-					success = false;
-				}
-			}
-		}
-	}
-
-	return success;
-}
-
-bool loadMedia()
-{
-	//Loading success flag
-	bool success = true;
-
-	//Open the font
-	gFont = TTF_OpenFont("lazy.ttf", 28);
-	if (gFont == NULL)
-	{
-		printf("Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError());
-		success = false;
-	}
-	else
-	{
-		//Render text
-		SDL_Color textColor = { 0, 0, 0 };
-		if (!gTextTexture.loadFromRenderedText("oh shit!", textColor))
-		{
-			printf("Failed to render text texture!\n");
-			success = false;
-		}
-	}
-
-	return success;
-}
-
-void close()
-{
-	//Free loaded images
-	gTextTexture.free();
-
-	//Free global font
-	TTF_CloseFont(gFont);
-	gFont = NULL;
-
-	//Destroy window	
-	SDL_DestroyRenderer(gRenderer);
-	SDL_DestroyWindow(gWindow);
-	gWindow = NULL;
-	gRenderer = NULL;
-
-	//Quit SDL subsystems
-	TTF_Quit();
-	IMG_Quit();
-	SDL_Quit();
-}
+SDL_Rect windowRect = { 900, 300, 400, 600 };
+SDL_Window* window;
+SDL_Renderer* renderer;
 
 int main(int argc, char* args[])
 {
-	//Start up SDL and create window
-	if (!init())
+	if(!InitEverything())
 	{
-		printf("Failed to initialize!\n");
+		return -1;
 	}
-	else
+	RunGame();
+	TTF_CloseFont(font);
+}
+
+void RunGame()
+{
+	Render();
+	std::cout << "Press any key to exit\n";
+	std::cin.ignore();
+}
+void Render()
+{
+	//clear
+	SDL_RenderClear(renderer);
+	
+	//render or text-objects
+	SDL_RenderCopy(renderer, solidTexture, nullptr, &solidRect);
+	SDL_RenderCopy(renderer, blendedTexture, nullptr, &blendedRect);
+	SDL_RenderCopy(renderer, shadedTexture, nullptr, &shadedRect);
+
+	//render the changes
+	SDL_RenderPresent(renderer);
+}
+
+//Initialization
+bool SetupTTF(const std::string &fontName)
+{
+	//error msg just like SDL2
+	if(TTF_Init() == -1)
 	{
-		//Load media
-		if (!loadMedia())
-		{
-			printf("Failed to load media!\n");
-		}
-		else
-		{
-			//Main loop flag
-			bool quit = false;
-
-			//Event handler
-			SDL_Event e;
-
-			//While application is running
-			while (!quit)
-			{
-				//Handle events on queue
-				while (SDL_PollEvent(&e) != 0)
-				{
-					//User requests quit
-					if (e.type == SDL_QUIT)
-					{
-						quit = true;
-					}
-				}
-
-				//Clear screen
-				SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-				SDL_RenderClear(gRenderer);
-
-				//Render current frame
-				gTextTexture.render((SCREEN_WIDTH - gTextTexture.getWidth()) / 2, (SCREEN_HEIGHT - gTextTexture.getHeight()) / 2);
-
-				//Update screen
-				SDL_RenderPresent(gRenderer);
-			}
-		}
+		std::cout << "Failed to initialize TTF:" << SDL_GetError() << std::endl;
+		return false;
 	}
 
-	//Free resources and close SDL
-	close();
+	//load font
+	font = TTF_OpenFont(fontName.c_str(), 90);
 
-	return 0;
+	//check for Error
+	if(font == nullptr)
+	{
+		std::cout << "Failed to initialize TTF:" << SDL_GetError() << std::endl;
+		return false;
+	}
+	return true;
+}
+
+void CreateTextTextures()
+{
+	SDL_Surface* solid = TTF_RenderText_Solid(font, "solid", textColor);
+	solidTexture = SurfaceToTexture(solid);
+
+	SDL_QueryTexture(solidTexture, NULL, NULL, &solidRect.w, &solidRect.h);
+	solidRect.x = 0;
+	solidRect.y = 0;
+
+	SDL_Surface* blended = TTF_RenderText_Blended(font, "blended", textColor);
+	blendedTexture = SurfaceToTexture(blended);
+
+	SDL_QueryTexture(blendedTexture, NULL, NULL, &blendedRect.w, &blendedRect.h);
+	blendedRect.x = 0;
+	blendedRect.y = solidRect.y + solidRect.h + 20;
+
+	SDL_Surface* shaded = TTF_RenderText_Shaded(font, "shaded", textColor, backgroundColor);
+	shadedTexture = SurfaceToTexture(shaded);
+
+	SDL_QueryTexture(shadedTexture, NULL, NULL, &shadedRect.w, &shadedRect.h);
+	shadedRect.x = 0;
+	shadedRect.y = blendedRect.y + blendedRect.h + 20;
+}
+
+SDL_Texture* SurfaceToTexture(SDL_Surface* surf)
+{
+	SDL_Texture* text;
+	text = SDL_CreateTextureFromSurface(renderer, surf);
+	SDL_FreeSurface(surf);
+	return text; 
+}
+
+bool InitEverything()
+{
+	if(!InitSDL())
+	{
+		return false;
+	}
+	if(!CreateWindow())
+	{
+		return false;
+	}
+	if(!CreateRenderer())
+	{
+		return false;
+	}
+	SetupRenderer();
+	if(!SetupTTF("sketchy.ttf"))
+	{
+		return false;
+	}
+	CreateTextTextures();
+	return true;
+}
+
+bool InitSDL()
+{
+	if(SDL_Init(SDL_INIT_EVERYTHING)== -1)
+	{
+		std::cout << " Failed to initialize SDL : " << SDL_GetError() << std::endl;
+		return false;
+	}
+
+	return true;
+}
+
+bool CreateWindow()
+{
+	window = SDL_CreateWindow("Server", windowRect.x, windowRect.y, windowRect.w, windowRect.h, 0);
+
+	if(window == nullptr)
+	{
+		std::cout << "Failed to create window : " << SDL_GetError();
+		return false;
+	}
+
+	return true;
+}
+
+bool CreateRenderer()
+{
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+	if(renderer == nullptr)
+	{
+		std::cout << "Failed to create renderer : " << SDL_GetError();
+		return false;
+	}
+
+	return true;
+}
+
+void SetupRenderer()
+{
+	SDL_RenderSetLogicalSize(renderer, windowRect.w, windowRect.h);
+
+	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 }
