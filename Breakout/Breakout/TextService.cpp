@@ -63,7 +63,7 @@ void TextService::Render()
 {
 	SDL_RenderClear(m_gRenderer);
 	SDL_RenderCopy(m_gRenderer, m_texture, nullptr, &m_textRect);
-	SDL_RenderPresent(m_gRenderer);
+	//(m_gRenderer);
 }
 
 
