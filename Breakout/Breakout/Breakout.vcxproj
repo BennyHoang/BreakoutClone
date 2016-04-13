@@ -153,6 +153,7 @@
     <ClCompile Include="Breakout_OnRender.cpp" />
     <ClCompile Include="Breakout_OnCleanup.cpp" />
     <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="TextService.cpp" />
   </ItemGroup>
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClInclude Include="Breakout.h" />
     <ClInclude Include="Brick.h" />
+    <ClInclude Include="Paddle.h" />
     <ClInclude Include="TextService.h" />
     <ClInclude Include="Square.h" />
   </ItemGroup>

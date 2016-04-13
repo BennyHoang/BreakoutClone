@@ -9,4 +9,5 @@ Brick::Brick(SDL_Window * window, SDL_Renderer * gRenderer, int x, int y, int he
 
 Brick::~Brick()
 {
+
 }

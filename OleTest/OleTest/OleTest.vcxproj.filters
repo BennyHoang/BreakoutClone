@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Debug\26_motion.cpp">
+    <ClCompile Include="Debug\27_collision_detection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

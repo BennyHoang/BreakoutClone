@@ -11,6 +11,7 @@ void Breakout::OnCleanup()
 	//Quit SDL subsystems
 	IMG_Quit();
 	SDL_Quit();
+	delete paddle;
 
 }
 

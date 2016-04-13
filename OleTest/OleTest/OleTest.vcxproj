@@ -146,7 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Debug\26_motion.cpp" />
+    <ClCompile Include="Debug\27_collision_detection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Debug\dot.bmp" />

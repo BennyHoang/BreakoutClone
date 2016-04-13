@@ -31,6 +31,8 @@ void Breakout::OnRender()
 		b.update();
 	}
 
+	paddle->update();
+	paddle->setPos(posX, paddle->getPosY());
 	//text1.Render();
 	/*
 	firkant1.setPos(posX, SCREEN_HEIGHT - 30);
@@ -79,6 +81,8 @@ void Breakout::rect()
 		thirdRow.push_back(brick);
 	}
 
+	paddle = new Paddle(window, gRenderer, space + (1 * (width + space)), SCREEN_HEIGHT - 60, heigth, 300, 00, 179, 00, 255);
+	
 	/*
 	firkant1.init(window, gRenderer, 20, 30, 20, 50, 00, 00, 255, 255);
 	firkant2.init(window, gRenderer, 80, 30, 20, 50, 00, 00, 255, 255);

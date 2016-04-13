@@ -10,6 +10,7 @@
 #include <cmath>
 #include <vector>
 #include "Brick.h"
+#include "Paddle.h"
 
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 768
@@ -41,6 +42,8 @@ private:
 	std::vector<Brick> firstRow;
 	std::vector<Brick> secondRow;
 	std::vector<Brick> thirdRow;
+
+	Paddle* paddle = NULL;
 
 public:
 	Breakout();

@@ -31,6 +31,7 @@ int Breakout::OnExecute() {
 
 	OnCleanup();
 
+	system("Pause");
 	return 0;
 }
 
