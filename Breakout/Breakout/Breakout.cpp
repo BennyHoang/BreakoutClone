@@ -8,6 +8,12 @@ int Breakout::OnExecute() {
 	if (OnInit() == false) {
 		return -1;
 	}
+	if (!text1.initControll())
+	{
+		std::cout << "something went wrong" << std::endl;
+		system("Pause");
+		return -1;
+	}
 
 	SDL_Event Event;
 
@@ -16,12 +22,7 @@ int Breakout::OnExecute() {
 			OnEvent(&Event);
 		}
 
-		if (!text1.initControll())
-		{
-			std::cout << "something went wrong" << std::endl;
-			system("Pause");
-			return -1;
-		}
+
 		
 
 		OnLoop();

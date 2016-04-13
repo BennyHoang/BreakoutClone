@@ -8,6 +8,8 @@
 #include "Square.h"
 #include "TextService.h"
 #include <cmath>
+#include <vector>
+#include "Brick.h"
 
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 768
@@ -35,6 +37,10 @@ private:
 	bool once = false;
 
 	int posX = 140;
+
+	std::vector<Brick> firstRow;
+	std::vector<Brick> secondRow;
+	std::vector<Brick> thirdRow;
 
 public:
 	Breakout();
