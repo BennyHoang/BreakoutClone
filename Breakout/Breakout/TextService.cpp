@@ -1,8 +1,9 @@
 #include "TextService.h"
 #include <iostream>
 
-void TextService::init(SDL_Window* window, SDL_Renderer* gRenderer, int textRectW, int textRectH, int color_r, int color_g, int color_b, int color_alpha)
+void TextService::init(TTF_Font* font, SDL_Window* window, SDL_Renderer* gRenderer, int textRectW, int textRectH, int color_r, int color_g, int color_b, int color_alpha)
 {
+	m_font = font;
 	m_window = window;
 	m_gRenderer = gRenderer;
 	
@@ -27,7 +28,7 @@ bool TextService::initControll()
 
 bool TextService::loadFont()
 {
-	m_font = TTF_OpenFont("Sketchy.ttf", 20);
+	m_font = TTF_OpenFont("Sketchy.ttf", 100);
 	if(m_font == NULL)
 	{
 		std::cout << " Failed to load font : " << SDL_GetError() << std::endl;

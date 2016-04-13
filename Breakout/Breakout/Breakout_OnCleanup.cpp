@@ -9,6 +9,7 @@ void Breakout::OnCleanup()
 	window = NULL;
 	gRenderer = NULL;
 	//Quit SDL subsystems
+	TTF_CloseFont(m_font);
 	IMG_Quit();
 	SDL_Quit();
 

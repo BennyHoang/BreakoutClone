@@ -22,6 +22,8 @@ private:
 	//The surface contained by the window
 	SDL_Surface* screenSurface = NULL;
 
+	TTF_Font* m_font = NULL;
+
 
 	//The window renderer
 	SDL_Renderer* gRenderer = NULL;

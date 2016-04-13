@@ -7,14 +7,15 @@
 class TextService
 {
 public:
-	void init(SDL_Window* window, SDL_Renderer* gRenderer, int textRectW, int textRectH, int color_r, int color_g, int color_b, int color_alpha);
+	void init(TTF_Font* font, SDL_Window* window, SDL_Renderer* gRenderer, int textRectW, int textRectH, int color_r, int color_g, int color_b, int color_alpha);
 	bool initControll();
 	bool loadFont();
 	bool CreateRenderer();
 	void setTextColor(Uint8 r, Uint8 g, Uint8 b, Uint8 opacity);
 	void setSize(int w, int h);
-	void Render();;
+	void Render();
 	void CreateTextures();
+	void Close();
 	SDL_Texture* SurfaceToTexture(SDL_Surface* surf);
 private:
 	TTF_Font* m_font = NULL;
