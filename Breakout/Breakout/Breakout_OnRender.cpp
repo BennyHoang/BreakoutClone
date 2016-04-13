@@ -17,7 +17,7 @@ void Breakout::OnRender()
 		rect();
 		once = !once;
 	}//end
-	text1.Render();
+	gTextTexture.render((SCREEN_WIDTH - gTextTexture.getWidth()) / 2, (SCREEN_HEIGHT - gTextTexture.getHeight()) / 2);
 
 	firkant1.setPos(posX, SCREEN_HEIGHT - 30);
 	firkant1.setSize(100, 20);

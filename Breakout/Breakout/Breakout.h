@@ -26,11 +26,13 @@ private:
 	//The window renderer
 	SDL_Renderer* gRenderer = NULL;
 
+	TTF_Font* gFont = NULL;
+
 	Square firkant1;
 	Square firkant2;
 	Square firkant3;
 
-	TextService text1;
+	TextService gTextTexture;
 
 	bool once = false;
 
@@ -54,4 +56,6 @@ public:
 	void rect();
 
 	void OnCleanup();
+
+	bool LoadFont();
 };

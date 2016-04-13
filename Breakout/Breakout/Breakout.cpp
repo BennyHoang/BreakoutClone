@@ -8,17 +8,28 @@ int Breakout::OnExecute() {
 	if (OnInit() == false) {
 		return -1;
 	}
+	else
+	{
+		if (!LoadFont())
+		{
+			printf("Failed to load font\n");
+		}
+		else
+		{
+			SDL_Event Event;
+			while (Running) {
+				while (SDL_PollEvent(&Event)) {
+					OnEvent(&Event);
+				}
 
-	SDL_Event Event;
-
-	while (Running) {
-		while (SDL_PollEvent(&Event)) {
-			OnEvent(&Event);
+				OnLoop();
+				OnRender();
+			}
 		}
 
-		OnLoop();
-		OnRender();
 	}
+
+
 
 	OnCleanup();
 
