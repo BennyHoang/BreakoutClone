@@ -18,6 +18,13 @@ bool Breakout::OnInit()
 		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
 	}
 
+	if (!text1.initControll())
+	{
+
+		std::cout << "something went wrong in initControll" << std::endl;
+		system("pause");
+	}
+
 	else
 	{
 		//Create window

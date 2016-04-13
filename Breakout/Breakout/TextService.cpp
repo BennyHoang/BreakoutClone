@@ -13,11 +13,7 @@ void TextService::init(SDL_Window* window, SDL_Renderer* gRenderer, int textRect
 
 bool TextService::initControll()
 {
-	if (TTF_Init() == -1)
-	{
-		return false;
-	}
-	if (loadFont() == false)
+	if (!loadFont())	
 	{
 		return false;
 	}
@@ -27,6 +23,12 @@ bool TextService::initControll()
 
 bool TextService::loadFont()
 {
+	if (TTF_Init() == -1)
+	{
+		std::cout << " Failed to load font : " << SDL_GetError() << std::endl;
+		return false;
+	}
+
 	m_font = TTF_OpenFont("Sketchy.ttf", 20);
 	if(m_font == NULL)
 	{
@@ -35,7 +37,7 @@ bool TextService::loadFont()
 	}
 	return true;
 }
-
+/*
 bool TextService::CreateRenderer()
 {
 	m_gRenderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
@@ -47,6 +49,8 @@ bool TextService::CreateRenderer()
 	}
 	return true;
 }
+
+*/
 
 void TextService::setTextColor(Uint8 r, Uint8 g, Uint8 b, Uint8 opacity)
 {
