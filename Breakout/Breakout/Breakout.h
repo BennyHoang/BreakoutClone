@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL.h>
+#include <SDL_ttf.h>
 #include <iostream>
 #include <SDL_image.h>
 #include <stdio.h>
@@ -26,7 +27,7 @@ private:
 	//The window renderer
 	SDL_Renderer* gRenderer = NULL;
 
-	TTF_Font* gFont = NULL;
+	TTF_Font* gFont;
 
 	Square firkant1;
 	Square firkant2;

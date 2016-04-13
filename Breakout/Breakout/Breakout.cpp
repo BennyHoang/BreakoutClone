@@ -5,31 +5,33 @@ Breakout::Breakout() {
 }
 
 int Breakout::OnExecute() {
-	if (OnInit() == false) {
-		return -1;
+	if (OnInit() == false) 
+	{
+		printf("failed to init");
 	}
 	else
 	{
 		if (!LoadFont())
 		{
 			printf("Failed to load font\n");
+			system("pause");
 		}
+
 		else
 		{
 			SDL_Event Event;
-			while (Running) {
-				while (SDL_PollEvent(&Event)) {
+			while (Running) 
+			{
+				while (SDL_PollEvent(&Event)) 
+				{
 					OnEvent(&Event);
 				}
-
+				
 				OnLoop();
 				OnRender();
 			}
 		}
-
 	}
-
-
 
 	OnCleanup();
 

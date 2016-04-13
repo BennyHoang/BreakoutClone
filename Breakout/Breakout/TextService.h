@@ -4,6 +4,8 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include <iostream>
+#include <stdio.h>
+#include <string>
 
 class TextService
 {

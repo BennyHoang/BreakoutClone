@@ -21,23 +21,4 @@ void Breakout::OnCleanup()
 
 }
 
-bool Breakout::LoadFont()
-{
-	gFont = TTF_OpenFont("sketchy.ttf", 20);
-	if(gFont == NULL)
-	{
-		printf("Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError());
-		return false;
-	}else
-	{
-		SDL_Color textColor = { 0, 0, 0 };
-		if (!gTextTexture.loadFromRenderedText("the text", textColor))
-		{
-			printf("Failed to render text texture!\n");
-			return false;
-		}
-	}
 
-	return true;
-		
-}

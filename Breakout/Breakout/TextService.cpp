@@ -118,15 +118,15 @@ bool TextService::loadFromRenderedText(std::string textureText, SDL_Color textCo
 	free();
 
 	SDL_Surface* textSurface = TTF_RenderText_Solid(mFont, textureText.c_str(), textColor);
-	if(mTexture == NULL)
+	if(textSurface == NULL)
 	{
-		printf("Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError());
+		printf("Unable to create texture from rendered text1! SDL Error: %s\n", SDL_GetError());
 	}else
 	{
 		mTexture = SDL_CreateTextureFromSurface(mRenderer, textSurface);
 		if(mTexture == NULL)
 		{
-			printf("Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError());
+			printf("Unable to create texture from rendered text2! SDL Error: %s\n", SDL_GetError());
 		}
 		else
 		{

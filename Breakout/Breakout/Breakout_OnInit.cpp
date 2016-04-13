@@ -53,10 +53,11 @@ bool Breakout::OnInit()
 					printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
 					success = false;
 				}
+
 			}
 		}
 	}
-	return true;
+	return success;
 }
 
 SDL_Texture* Breakout::loadTexture(std::string path)
@@ -84,4 +85,29 @@ SDL_Texture* Breakout::loadTexture(std::string path)
 	}
 
 	return newTexture;
+}
+
+bool Breakout::LoadFont()
+{
+	bool success = true;
+	gFont = TTF_OpenFont("sketchy.ttf", 20);
+	gTextTexture.init(gFont, window, gRenderer);
+	if (gFont == NULL)
+	{
+		printf("Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError());
+		success = false;
+	}
+	else
+	{
+
+		SDL_Color textColor = { 255, 255, 255, 255 };
+		if (!gTextTexture.loadFromRenderedText("AH MY GAWD!", textColor))
+		{
+			printf("Failed to render text texture!\n");
+			success = false;
+		}
+	}
+
+	return success;
+
 }

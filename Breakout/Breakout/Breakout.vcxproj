@@ -167,6 +167,7 @@
     <Text Include="Setup.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Font Include="lazy.ttf" />
     <Font Include="sketchy.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

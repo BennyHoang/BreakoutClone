@@ -42,5 +42,5 @@ void Breakout::rect()
 	firkant1.init(window, gRenderer, 20, 30, 20, 50, 00, 00, 255, 255);
 	firkant2.init(window, gRenderer, 80, 30, 20, 50, 00, 00, 255, 255);
 	firkant3.init(window, gRenderer, 140, 30, 20, 50, 00, 00, 255, 255);
-	text1.init(window, gRenderer, 100, 100, 255, 255, 255, 255);
+	
 }

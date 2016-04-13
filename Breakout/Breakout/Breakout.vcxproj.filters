@@ -63,5 +63,8 @@
     <Font Include="sketchy.ttf">
       <Filter>Source Files</Filter>
     </Font>
+    <Font Include="lazy.ttf">
+      <Filter>Source Files</Filter>
+    </Font>
   </ItemGroup>
 </Project>
