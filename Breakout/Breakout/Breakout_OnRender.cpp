@@ -20,6 +20,26 @@ void Breakout::OnRender()
 	gTextTexture.render((SCREEN_WIDTH - gTextTexture.getWidth()) / 2, (SCREEN_HEIGHT - gTextTexture.getHeight()) / 2);
 	gText.render(0, 50);
 
+	for (int i = 0; i < rows.size(); i++)
+	{
+		for (int e = 0; e < rows[i].size(); e++)
+		{
+			rows[i][e].update();
+			if (collisionManager.hasCollided(rows[i][e].getRect(), ball->getRect()))
+			{
+				rows[i].erase(rows[i].begin() + e);
+				(ball->m_vector_y -= (2 * ball->m_vector_y));
+			}
+		}
+	}
+
+	if (ball->getPosY() <= 0 || ball->getPosY() >= SCREEN_HEIGHT)
+		ball->m_vector_y -= (ball->m_vector_y * 2);
+	if (ball->getPosX() <= 0 || ball->getPosX() >= SCREEN_WIDTH)
+			ball->m_vector_x -= (ball->m_vector_x * 2);
+
+
+	/*
 	for each (Brick b in firstRow)
 	{
 		b.update();
@@ -41,14 +61,18 @@ void Breakout::OnRender()
 			b.~Brick();
 		}
 
-	}
+	}*/
 
 	paddle->update();
 	paddle->setPos(posX, paddle->getPosY());
 	ball->update();
 	ball->updatePosition();
 	if (collisionManager.hasCollided(paddle->getRect(), ball->getRect()))
+	{
 		(ball->m_vector_y -= (2 * ball->m_vector_y));
+		ball->m_vector_x -= (2 * ball->m_vector_x);
+	}
+
 	//text1.Render();
 	/*
 	firkant1.setPos(posX, SCREEN_HEIGHT - 30);
@@ -75,6 +99,11 @@ void Breakout::rect()
 	int space = 5;
 	int heigth = 50;
 	int heigth_from_top = 50;
+
+
+
+
+
 	for (int i = 0; i < 9; i++)
 	{
 		Brick brick(window, gRenderer, space + (i * (width + space)), heigth_from_top, heigth, width, 00, 00, 255, 255);
@@ -95,6 +124,10 @@ void Breakout::rect()
 		Brick brick(window, gRenderer, space + (i * (width + space)), heigth_from_top, heigth, width, 255, 00, 00, 255);
 		thirdRow.push_back(brick);
 	}
+
+	rows.push_back(firstRow);
+	rows.push_back(secondRow);
+	rows.push_back(thirdRow);
 
 	paddle = new Paddle(window, gRenderer, space + (1 * (width + space)), SCREEN_HEIGHT - 60, heigth, 300, 00, 179, 00, 255);
 	ball = new Ball(window, gRenderer, SCREEN_WIDTH / 2, SCREEN_HEIGHT - 70, 179, 179, 179, 255);

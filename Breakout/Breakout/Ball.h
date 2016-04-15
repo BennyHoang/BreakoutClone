@@ -11,7 +11,7 @@ public:
 
 	const int ball_heigth = 10;
 	const int ball_width = 10;
-	int m_vector_x = 0; 
+	int m_vector_x = 1; 
 	int m_vector_y = -1;
 };
 

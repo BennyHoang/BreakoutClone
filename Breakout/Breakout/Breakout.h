@@ -49,6 +49,7 @@ private:
 
 	int posX = 140;
 
+	std::vector< std::vector<Brick> > rows;
 	std::vector<Brick> firstRow;
 	std::vector<Brick> secondRow;
 	std::vector<Brick> thirdRow;
