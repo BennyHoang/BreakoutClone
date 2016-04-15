@@ -13,6 +13,7 @@
 #include "Brick.h"
 #include "Paddle.h"
 #include "Ball.h"
+#include "CollisionManager.h"
 
 
 #define SCREEN_WIDTH 1024
@@ -54,6 +55,8 @@ private:
 
 	Paddle* paddle = NULL;
 	Ball * ball = NULL;
+
+	CollisionManager collisionManager;
 
 public:
 	Breakout();

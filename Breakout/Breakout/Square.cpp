@@ -17,7 +17,10 @@ void Square::init(SDL_Window* window, SDL_Renderer* gRenderer, int x, int y, int
 	setSize(width, height);
 	setColor(color_r, color_g, color_b, color_alpha);
 	setPos(x, y);
-	
+	rect.h = height;
+	rect.w = width;
+	rect.x = x;
+	rect.y = y;
 	
 }
 
@@ -49,6 +52,11 @@ int Square::getPosX()
 int Square::getPosY()
 {
 	return m_y;
+}
+
+SDL_Rect * Square::getRect()
+{
+	return  &rect;
 }
 
 void Square::update()

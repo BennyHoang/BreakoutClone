@@ -14,6 +14,7 @@ public:
 	void setSize(int width, int height);
 	int getPosX();
 	int getPosY();
+	SDL_Rect* getRect();
 	void update();
 
 private:
@@ -25,6 +26,6 @@ private:
 
 	SDL_Window* m_window = NULL;
 	SDL_Renderer* m_gRenderer = NULL;
-
+	SDL_Rect rect;
 };
 

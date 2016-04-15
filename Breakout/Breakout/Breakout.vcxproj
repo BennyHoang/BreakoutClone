@@ -154,6 +154,7 @@
     <ClCompile Include="Breakout_OnRender.cpp" />
     <ClCompile Include="Breakout_OnCleanup.cpp" />
     <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="TextService.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Breakout.h" />
     <ClInclude Include="Brick.h" />
+    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="TextService.h" />

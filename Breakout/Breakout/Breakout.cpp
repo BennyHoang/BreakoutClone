@@ -14,7 +14,6 @@ int Breakout::OnExecute() {
 		if (!LoadFont())
 		{
 			printf("Failed to load font\n");
-			system("pause");
 		}
 
 		else
@@ -41,6 +40,8 @@ int Breakout::OnExecute() {
 	}
 
 	OnCleanup();
+
+	system("pause");
 
 	return 0;
 }

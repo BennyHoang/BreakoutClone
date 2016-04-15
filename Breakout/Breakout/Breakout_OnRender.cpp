@@ -23,6 +23,8 @@ void Breakout::OnRender()
 	for each (Brick b in firstRow)
 	{
 		b.update();
+		if (collisionManager.hasCollided(b.getRect(), ball->getRect())) std::cout << "bang!" << std::endl;
+
 	}	
 	for each (Brick b in secondRow)
 	{

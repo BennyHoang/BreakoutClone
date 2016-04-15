@@ -11,6 +11,9 @@ Ball::Ball(SDL_Window * window, SDL_Renderer * gRenderer, int x, int y, int colo
 void Ball::updatePosition()
 {
 	setPos(getPosX() + m_vector_x, getPosY() + m_vector_y);
+	SDL_Rect* this_rect = getRect();
+	this_rect->x = getPosX();
+	this_rect->y = getPosY();
 }
 
 void Ball::updateVector(int delta_x, int delta_y)
