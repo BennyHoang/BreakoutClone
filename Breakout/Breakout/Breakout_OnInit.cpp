@@ -99,13 +99,8 @@ bool Breakout::LoadFont()
 	}
 	else
 	{
-
-		SDL_Color textColor = { 255, 255, 255, 255 };
-		if (!gTextTexture.loadFromRenderedText("AH MY GAWD!", textColor))
-		{
-			printf("Failed to render text texture!\n");
-			success = false;
-		}
+		SDL_Color textColor = { 255, 255, 255, 255};
+		gTextTexture.loadFromRenderedText(TXT_HIGHSCORE, textColor);
 	}
 
 	return success;

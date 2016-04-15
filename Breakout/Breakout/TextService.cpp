@@ -66,12 +66,6 @@ void TextService::setSize(int w, int h)
 	m_textRect.h = h;
 }
 
-void TextService::Render()
-{
-	SDL_RenderClear(m_gRenderer);
-	SDL_RenderCopy(m_gRenderer, m_texture, nullptr, &m_textRect);
-	//(m_gRenderer);
-}
 
 
 void TextService::CreateTextures()

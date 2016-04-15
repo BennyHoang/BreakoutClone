@@ -13,6 +13,9 @@
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 768
 
+/*Text Defines*/
+#define TXT_HIGHSCORE "Highscore"
+
 class Breakout {
 private:
 	bool Running;
