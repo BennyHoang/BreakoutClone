@@ -64,4 +64,5 @@ void Square::update()
 	SDL_Rect fillRect = { m_x, m_y, m_width, m_height };
 	SDL_SetRenderDrawColor(m_gRenderer, m_color_r, m_color_g, m_color_b, m_color_alpha);
 	SDL_RenderFillRect(m_gRenderer, &fillRect);
+	rect = fillRect;
 }

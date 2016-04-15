@@ -23,22 +23,32 @@ void Breakout::OnRender()
 	for each (Brick b in firstRow)
 	{
 		b.update();
-		if (collisionManager.hasCollided(b.getRect(), ball->getRect())) std::cout << "bang!" << std::endl;
+
 
 	}	
 	for each (Brick b in secondRow)
 	{
 		b.update();
+		if (collisionManager.hasCollided(b.getRect(), ball->getRect())) std::cout << "bang!" << std::endl;
+
 	}	
 	for each (Brick b in thirdRow)
 	{
 		b.update();
+		if (collisionManager.hasCollided(b.getRect(), ball->getRect()))
+		{
+			(ball->m_vector_y -= (2 * ball->m_vector_y));
+			b.~Brick();
+		}
+
 	}
 
 	paddle->update();
 	paddle->setPos(posX, paddle->getPosY());
 	ball->update();
 	ball->updatePosition();
+	if (collisionManager.hasCollided(paddle->getRect(), ball->getRect()))
+		(ball->m_vector_y -= (2 * ball->m_vector_y));
 	//text1.Render();
 	/*
 	firkant1.setPos(posX, SCREEN_HEIGHT - 30);
