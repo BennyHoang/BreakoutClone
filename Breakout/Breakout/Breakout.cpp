@@ -19,12 +19,19 @@ int Breakout::OnExecute() {
 
 		else
 		{
+			int score = 0;
 			SDL_Event Event;
 			while (Running) 
 			{
 				while (SDL_PollEvent(&Event)) 
 				{
 					OnEvent(&Event);
+					if (Event.key.keysym.sym == SDLK_UP)
+					{
+						score++;
+						SDL_Color textColor = { 255, 255, 255, 255 };
+						gTextTexture.loadFromRenderedText(std::to_string(score), textColor);
+					}
 				}
 				
 				OnLoop();
