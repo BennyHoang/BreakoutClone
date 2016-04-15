@@ -1,0 +1,24 @@
+#include "Ball.h"
+
+
+
+
+Ball::Ball(SDL_Window * window, SDL_Renderer * gRenderer, int x, int y, int color_r, int color_g, int color_b, int color_alpha)
+{
+	init(window, gRenderer, x, y, ball_heigth, ball_width, color_r, color_g, color_b, color_alpha);
+}
+
+void Ball::updatePosition()
+{
+	setPos(getPosX() + m_vector_x, getPosY() + m_vector_y);
+}
+
+void Ball::updateVector(int delta_x, int delta_y)
+{
+	m_vector_x += delta_x;
+	m_vector_y += delta_y;
+}
+
+Ball::~Ball()
+{
+}

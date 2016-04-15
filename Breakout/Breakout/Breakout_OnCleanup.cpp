@@ -12,6 +12,9 @@ void Breakout::OnCleanup()
 	IMG_Quit();
 	SDL_Quit();
 	delete paddle;
+	paddle = NULL;
+	delete ball;
+	ball = NULL;
 
 }
 

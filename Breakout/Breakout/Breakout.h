@@ -11,6 +11,8 @@
 #include <vector>
 #include "Brick.h"
 #include "Paddle.h"
+#include "Ball.h"
+
 
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 768
@@ -44,6 +46,7 @@ private:
 	std::vector<Brick> thirdRow;
 
 	Paddle* paddle = NULL;
+	Ball * ball = NULL;
 
 public:
 	Breakout();
