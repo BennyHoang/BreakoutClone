@@ -63,7 +63,6 @@ void Breakout::rect()
 	int space = 5;
 	int heigth = 50;
 	int heigth_from_top = 50;
-	text1.init(window, gRenderer, 100, 100, 255, 00, 00, 00);
 	for (int i = 0; i < 9; i++)
 	{
 		Brick brick(window, gRenderer, space + (i * (width + space)), heigth_from_top, heigth, width, 00, 00, 255, 255);
