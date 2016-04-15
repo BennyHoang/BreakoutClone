@@ -30,7 +30,7 @@ int Breakout::OnExecute() {
 					{
 						score++;
 						SDL_Color textColor = { 255, 255, 255, 255 };
-						gTextTexture.loadFromRenderedText(std::to_string(score), textColor);
+						gText.loadFromRenderedText(std::to_string(score), textColor);
 					}
 				}
 				

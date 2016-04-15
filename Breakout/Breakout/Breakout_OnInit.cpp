@@ -92,6 +92,7 @@ bool Breakout::LoadFont()
 	bool success = true;
 	gFont = TTF_OpenFont("sketchy.ttf", 20);
 	gTextTexture.init(gFont, window, gRenderer);
+	gText.init(gFont, window, gRenderer);
 	if (gFont == NULL)
 	{
 		printf("Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError());
@@ -101,6 +102,7 @@ bool Breakout::LoadFont()
 	{
 		SDL_Color textColor = { 255, 255, 255, 255};
 		gTextTexture.loadFromRenderedText(TXT_HIGHSCORE, textColor);
+		gText.loadFromRenderedText("hello boii", textColor);
 	}
 
 	return success;

@@ -37,6 +37,7 @@ private:
 	Square firkant3;
 
 	TextService gTextTexture;
+	TextService gText;
 
 	bool once = false;
 
