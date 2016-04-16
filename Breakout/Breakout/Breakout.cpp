@@ -6,10 +6,9 @@ Breakout::Breakout() {
 
 int Breakout::OnExecute() {
 	std::string file = "highscore.txt";
-	ScoreManager score;
-	score.OpenFile(file);
-	score.ReadFile(file);
-	if (OnInit() == false) 
+	ScoreManager Score;
+	int score = 0;
+	if (OnInit() == false)
 	{
 		printf("failed to init");
 	}
@@ -22,28 +21,32 @@ int Breakout::OnExecute() {
 
 		else
 		{
-			int score = 0;
-	SDL_Event Event;
-			while (Running) 
+			
+			SDL_Event Event;
+			while (Running)
 			{
-				while (SDL_PollEvent(&Event)) 
+				while (SDL_PollEvent(&Event))
 				{
-			OnEvent(&Event);
+					OnEvent(&Event);
 					if (Event.key.keysym.sym == SDLK_UP)
 					{
 						score++;
 						SDL_Color textColor = { 255, 255, 255, 255 };
 						gText.loadFromRenderedText(std::to_string(score), textColor);
-		}
+						Score.SetScore(score);
+
+					}
 				}
-		
-		OnLoop();
-		OnRender();
-	}
+
+				OnLoop();
+				OnRender();
+			}
 		}
 	}
 
 	OnCleanup();
+	Score.OpenFile(file, score);
+	Score.ReadFile(file);
 
 	system("pause");
 

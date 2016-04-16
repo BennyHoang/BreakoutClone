@@ -7,7 +7,11 @@
 class ScoreManager
 {
 public:
-	void OpenFile(std::string filename);
+	void OpenFile(std::string filename, int score);
 	void ReadFile(std::string filename);
+	void SetScore(int score);
+
+private:
+	int m_score;
 };
 

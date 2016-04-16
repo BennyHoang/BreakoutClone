@@ -1,5 +1,1 @@
-Highscore:3
-Highscore:3
-Highscore:3
-Highscore:3
-Highscore:3
+score: 69
