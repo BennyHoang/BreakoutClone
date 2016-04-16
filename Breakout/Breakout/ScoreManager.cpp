@@ -42,7 +42,7 @@ void ScoreManager::ReadFile(std::string filename)
 		{
 			OutputScore(token);
 		}
-
+	
 	
 	fileIn.close();
 	
