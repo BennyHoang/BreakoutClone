@@ -5,6 +5,10 @@ Breakout::Breakout() {
 }
 
 int Breakout::OnExecute() {
+	std::string file = "highscore.txt";
+	ScoreManager score;
+	score.OpenFile(file);
+	score.ReadFile(file);
 	if (OnInit() == false) 
 	{
 		printf("failed to init");

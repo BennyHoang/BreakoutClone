@@ -88,6 +88,9 @@
     <Text Include="Setup.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="highscore.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Font Include="sketchy.ttf">

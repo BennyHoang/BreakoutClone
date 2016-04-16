@@ -8,6 +8,7 @@
 #include <string>
 #include "Square.h"
 #include "TextService.h"
+#include "ScoreManager.h"
 #include <cmath>
 #include <vector>
 #include "Brick.h"
