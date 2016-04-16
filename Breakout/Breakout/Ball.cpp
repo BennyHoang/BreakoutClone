@@ -6,6 +6,7 @@
 Ball::Ball(SDL_Window * window, SDL_Renderer * gRenderer, int x, int y, int color_r, int color_g, int color_b, int color_alpha)
 {
 	init(window, gRenderer, x, y, ball_heigth, ball_width, color_r, color_g, color_b, color_alpha);
+	//setPos(1,1);
 }
 
 void Ball::updatePosition()

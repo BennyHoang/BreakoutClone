@@ -3,7 +3,7 @@
 void Breakout::OnRender() 
 {
 	//Get window surface
-	screenSurface = SDL_GetWindowSurface(window);
+	//screenSurface = SDL_GetWindowSurface(window);
 
 	
 	//Render red filled quad
@@ -14,29 +14,30 @@ void Breakout::OnRender()
 	//Ifen er bare for å teste
 	if (!once)
 	{
-		rect();
+		//rect();
+		level.load(window, gRenderer);
 		once = !once;
 	}//end
 	gTextTexture.render((SCREEN_WIDTH - gTextTexture.getWidth()) / 2, (SCREEN_HEIGHT - gTextTexture.getHeight()) / 2);
 	gText.render(0, 50);
 
-	for (int i = 0; i < rows.size(); i++)
+	for (int i = 0; i < level.rows.size(); i++)
 	{
-		for (int e = 0; e < rows[i].size(); e++)
+		for (int e = 0; e < level.rows[i].size(); e++)
 		{
-			rows[i][e].update();
-			if (collisionManager.hasCollided(rows[i][e].getRect(), ball->getRect()))
+			level.rows[i][e].update();
+			if (collisionManager.hasCollided(level.rows[i][e].getRect(), level.ball->getRect()))
 			{
-				rows[i].erase(rows[i].begin() + e);
-				(ball->m_vector_y -= (2 * ball->m_vector_y));
+				level.rows[i].erase(level.rows[i].begin() + e);
+				(level.ball->m_vector_y -= (2 * level.ball->m_vector_y));
 			}
 		}
 	}
 
-	if (ball->getPosY() <= 0 || ball->getPosY() >= SCREEN_HEIGHT)
-		ball->m_vector_y -= (ball->m_vector_y * 2);
-	if (ball->getPosX() <= 0 || ball->getPosX() >= SCREEN_WIDTH)
-			ball->m_vector_x -= (ball->m_vector_x * 2);
+	if (level.ball->getPosY() <= 0 || level.ball->getPosY() >= SCREEN_HEIGHT)
+		level.ball->m_vector_y -= (level.ball->m_vector_y * 2);
+	if (level.ball->getPosX() <= 0 || level.ball->getPosX() >= SCREEN_WIDTH)
+		level.ball->m_vector_x -= (level.ball->m_vector_x * 2);
 
 
 	/*
@@ -63,14 +64,14 @@ void Breakout::OnRender()
 
 	}*/
 
-	paddle->update();
-	paddle->setPos(posX, paddle->getPosY());
-	ball->update();
-	ball->updatePosition();
-	if (collisionManager.hasCollided(paddle->getRect(), ball->getRect()))
+	level.paddle->update();
+	level.paddle->setPos(posX, level.paddle->getPosY());
+	level.ball->update();
+	level.ball->updatePosition();
+	if (collisionManager.hasCollided(level.paddle->getRect(), level.ball->getRect()))
 	{
-		(ball->m_vector_y -= (2 * ball->m_vector_y));
-		ball->m_vector_x -= (2 * ball->m_vector_x);
+		(level.ball->m_vector_y -= (2 * level.ball->m_vector_y));
+		level.ball->m_vector_x -= (2 * level.ball->m_vector_x);
 	}
 
 	//text1.Render();
@@ -94,7 +95,7 @@ void Breakout::OnRender()
 
 void Breakout::rect()
 {
-	
+	/*
 	int width = 108;
 	int space = 5;
 	int heigth = 50;
@@ -141,6 +142,6 @@ void Breakout::rect()
 	firkant3.init(window, gRenderer, 140, 30, 20, 50, 00, 00, 255, 255);
 	*/
 
-
+	
 }
 
