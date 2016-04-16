@@ -156,6 +156,7 @@
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Paddle.cpp" />
+    <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="TextService.cpp" />
   </ItemGroup>
