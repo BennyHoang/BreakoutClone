@@ -1,4 +1,5 @@
 #include "ScoreManager.h"
+#include <sstream>
 
 
 void ScoreManager::OpenFile(std::string filename)
@@ -16,14 +17,35 @@ void ScoreManager::OpenFile(std::string filename)
 
 void ScoreManager::ReadFile(std::string filename)
 {
+	/*
+	std::ofstream fileIn;
+	fileIn.open(filename, std::fstream::in);
+	std::stringstream buffer;
+	buffer << fileIn.rdbuf();
+
+	std::string contents(buffer.str());
+	OutputScore(contents);
+	*/
+
+
+
+	
 	std::ifstream fileIn(filename);
 	std::string score;
-	while(!fileIn.eof())
-	{
-		std::getline(fileIn, score);
-		std::cout << score << std::endl;
-	}
 
+	std::stringstream buffer;
+	buffer << fileIn.rdbuf();
+
+	std::string token;
+
+		while(std::getline(buffer, token, '\n' ))
+		{
+			OutputScore(token);
+		}
+
+	
+	fileIn.close();
+	
 }
 
 void ScoreManager::SetScore(int score)

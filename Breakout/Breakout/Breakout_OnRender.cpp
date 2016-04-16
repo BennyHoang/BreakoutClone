@@ -17,6 +17,7 @@ void Breakout::OnRender()
 		rect();
 		once = !once;
 	}//end
+
 	gTextTexture.render((SCREEN_WIDTH - gTextTexture.getWidth()) / 2, (SCREEN_HEIGHT - gTextTexture.getHeight()) / 2);
 	gText.render(0, 50);
 
