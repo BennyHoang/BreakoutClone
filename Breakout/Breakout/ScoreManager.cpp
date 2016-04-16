@@ -23,9 +23,20 @@ void ScoreManager::ReadFile(std::string filename)
 		std::getline(fileIn, score);
 		std::cout << score << std::endl;
 	}
+
 }
 
 void ScoreManager::SetScore(int score)
 {
 	m_score = score;
 }
+
+void ScoreManager::OutputScore(std::string score)
+{
+	m_output_score = score;
+}
+std::string ScoreManager::GetOutputScore()
+{
+	return m_output_score;
+}
+

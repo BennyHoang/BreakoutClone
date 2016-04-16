@@ -5,8 +5,7 @@ Breakout::Breakout() {
 }
 
 int Breakout::OnExecute() {
-	std::string file = "highscore.txt";
-	ScoreManager Score;
+
 	int score = 0;
 	if (OnInit() == false)
 	{
@@ -32,6 +31,7 @@ int Breakout::OnExecute() {
 					{
 						score++;
 						SDL_Color textColor = { 255, 255, 255, 255 };
+						//gText.loadFromRenderedText(std::to_string(score), textColor);
 						gText.loadFromRenderedText(std::to_string(score), textColor);
 						Score.SetScore(score);
 

@@ -59,6 +59,8 @@ private:
 	Ball * ball = NULL;
 
 	CollisionManager collisionManager;
+	std::string file = "highscore.txt";
+	ScoreManager Score;
 
 public:
 	Breakout();

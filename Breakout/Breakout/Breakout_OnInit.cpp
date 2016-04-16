@@ -101,7 +101,7 @@ bool Breakout::LoadFont()
 	else
 	{
 		SDL_Color textColor = { 255, 255, 255, 255};
-		gTextTexture.loadFromRenderedText(TXT_HIGHSCORE, textColor);
+		gTextTexture.loadFromRenderedText(Score.GetOutputScore(), textColor);
 		gText.loadFromRenderedText("hello boii", textColor);
 	}
 
