@@ -49,6 +49,7 @@ private:
 	bool once = false;
 
 	int posX = 140;
+	bool load_lvl_one = true;
 
 	/*
 	std::vector<Brick> firstRow;
@@ -75,8 +76,6 @@ public:
 	void OnLoop();
 
 	void OnRender();
-
-	void rect();
 
 	void OnCleanup();
 
