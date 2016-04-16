@@ -16,6 +16,8 @@ public:
 	Level();
 	~Level();
 
+	void LoadFirstLevel(SDL_Window * window, SDL_Renderer * gRenderer);
+
 	//void load(SDL_Window * window, SDL_Renderer * gRenderer, std::vector<std::vector<Brick>> rows, Ball & ball, Paddle * paddle);
 
 	void load(SDL_Window * window, SDL_Renderer * gRenderer);
@@ -23,5 +25,6 @@ public:
 	std::vector< std::vector<Brick> > rows;
 	Ball* ball;
 	Paddle* paddle;
+	int bricks = 0;
 };
 
