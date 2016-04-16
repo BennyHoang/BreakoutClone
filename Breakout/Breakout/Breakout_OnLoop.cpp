@@ -31,6 +31,12 @@ void Breakout::OnLoop()
 					level.rows[i].erase(level.rows[i].begin() + e);
 					(level.ball->m_vector_y -= (2 * level.ball->m_vector_y));
 					level.bricks--;
+					score++;
+					std::string text = "HIGHSCORE: " + std::to_string(score);
+					SDL_Color textColor = { 255, 255, 255, 255 };
+					//gText.loadFromRenderedText(std::to_string(score), textColor);
+					gText.loadFromRenderedText(text, textColor);
+					Score.SetScore(score);
 				}
 			}
 		}

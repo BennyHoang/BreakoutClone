@@ -64,6 +64,7 @@ private:
 	CollisionManager collisionManager;
 	std::string file = "highscore.txt";
 	ScoreManager Score;
+	int score = 0;
 
 public:
 	Breakout();

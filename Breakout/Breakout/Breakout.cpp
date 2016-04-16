@@ -9,7 +9,7 @@ Breakout::Breakout() {
 
 int Breakout::OnExecute() {
 
-	int score = 0;
+	//int score = 0;
 	if (OnInit() == false)
 	{
 		printf("failed to init");
@@ -30,15 +30,6 @@ int Breakout::OnExecute() {
 				while (SDL_PollEvent(&Event))
 				{
 					OnEvent(&Event);
-					if (Event.key.keysym.sym == SDLK_UP)
-					{
-						score++;
-						SDL_Color textColor = { 255, 255, 255, 255 };
-						//gText.loadFromRenderedText(std::to_string(score), textColor);
-						gText.loadFromRenderedText(std::to_string(score), textColor);
-						Score.SetScore(score);
-
-					}
 				}
 
 				OnLoop();
