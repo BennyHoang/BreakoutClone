@@ -2,9 +2,6 @@
 
 Breakout::Breakout() {
 	Running = true;
-	//rows.push_back(firstRow);
-	//rows.push_back(secondRow);
-	//rows.push_back(thirdRow);
 }
 
 int Breakout::OnExecute() {
@@ -25,15 +22,9 @@ int Breakout::OnExecute() {
 	SDL_Event Event;
 			while (Running) 
 			{
-				while (SDL_PollEvent(&Event)) 
+				while (SDL_PollEvent(&Event))
 				{
-			OnEvent(&Event);
-					if (Event.key.keysym.sym == SDLK_UP)
-					{
-						score++;
-						SDL_Color textColor = { 255, 255, 255, 255 };
-						gText.loadFromRenderedText(std::to_string(score), textColor);
-		}
+					OnEvent(&Event);
 				}
 		
 		OnLoop();

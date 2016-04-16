@@ -8,6 +8,11 @@ public:
 	bool getFirstLeve();
 	bool getLoadNewLevel();
 	bool getGameOver();
+	void setGameOver(bool game_over);
+	void setInMenu(bool in_menu);
+	void setFirstLevel(bool first_level);
+	void setLoadNewLevel(bool new_level);
+	void setInGame(bool in_game);
 	~StateManager();
 private:
 	bool m_in_game;

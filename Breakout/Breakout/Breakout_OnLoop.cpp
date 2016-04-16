@@ -14,8 +14,6 @@ void Breakout::OnLoop()
 	if (level.bricks < 1)level.load(window, gRenderer);
 
 
-	{
-
 		if (collisionManager.hasCollided(level.paddle->getRect(), level.ball->getRect()))
 		{
 			(level.ball->m_vector_y -= (2 * level.ball->m_vector_y));
@@ -39,8 +37,6 @@ void Breakout::OnLoop()
 			level.ball->m_vector_y -= (level.ball->m_vector_y * 2);
 		if (level.ball->getPosX() <= 0 || level.ball->getPosX() >= SCREEN_WIDTH)
 			level.ball->m_vector_x -= (level.ball->m_vector_x * 2);
-
-	}
 
 	level.paddle->setPos(posX, level.paddle->getPosY());
 	level.ball->updatePosition();
