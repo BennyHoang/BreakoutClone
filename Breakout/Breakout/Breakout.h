@@ -15,6 +15,7 @@
 #include "Paddle.h"
 #include "Ball.h"
 #include "CollisionManager.h"
+#include "Level.h"
 
 
 #define SCREEN_WIDTH 1024
@@ -49,14 +50,16 @@ private:
 	bool once = false;
 
 	int posX = 140;
+	bool load_lvl_one = true;
 
-	std::vector< std::vector<Brick> > rows;
+	/*
 	std::vector<Brick> firstRow;
 	std::vector<Brick> secondRow;
 	std::vector<Brick> thirdRow;
-
-	Paddle* paddle = NULL;
-	Ball * ball = NULL;
+	*/
+	//Paddle* paddle = NULL;
+	//Ball * ball = NULL;
+	Level level;
 
 	CollisionManager collisionManager;
 	std::string file = "highscore.txt";
@@ -76,8 +79,6 @@ public:
 	void OnLoop();
 
 	void OnRender();
-
-	void rect();
 
 	void OnCleanup();
 

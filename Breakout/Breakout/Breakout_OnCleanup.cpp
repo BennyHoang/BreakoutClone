@@ -17,10 +17,7 @@ void Breakout::OnCleanup()
 	//Quit SDL subsystems
 	IMG_Quit();
 	SDL_Quit();
-	delete paddle;
-	paddle = NULL;
-	delete ball;
-	ball = NULL;
+	level.~Level();
 	TTF_Quit();
 
 }
