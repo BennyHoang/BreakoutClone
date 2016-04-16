@@ -1,16 +1,16 @@
 #include "ScoreManager.h"
 
 
-void ScoreManager::OpenFile(std::string filename, int score)
+void ScoreManager::OpenFile(std::string filename)
 {
 	std::ofstream fileOut;
-	fileOut.open(filename);
+	fileOut.open(filename, std::fstream::app);
 	/*for (int i = 0; i < 5; i++)
 	{
 		fileOut << "Highscore:" << 1 * 3 << std::endl;
 	}*/
 
-	fileOut << "score: " << score <<std::endl;
+	fileOut << "score: " << m_score <<std::endl;
 	fileOut.close();
 }
 

@@ -45,7 +45,7 @@ int Breakout::OnExecute() {
 	}
 
 	OnCleanup();
-	Score.OpenFile(file, score);
+	Score.OpenFile(file);
 	Score.ReadFile(file);
 
 	system("pause");

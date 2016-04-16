@@ -1,1 +1,2 @@
-score: 69
+score: 44
+score: 10
