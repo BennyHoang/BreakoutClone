@@ -49,8 +49,11 @@ private:
 */
 	TextService gTextTexture;
 	TextService gText;
+	TextService gTextLives;
 
 	Menu menu_screen;
+
+	Player player;
 
 	StateManager GameState;
 

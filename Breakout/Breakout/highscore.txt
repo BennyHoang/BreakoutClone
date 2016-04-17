@@ -77,3 +77,13 @@ score: 0
 score: 0
 score: 205
 score: 51
+score: 2
+score: 1
+score: 2
+score: 2
+score: 534
+score: 3
+score: 5
+score: 3
+score: 184
+score: 3

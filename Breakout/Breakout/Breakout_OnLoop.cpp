@@ -8,7 +8,7 @@ void Breakout::OnLoop()
 
 	if (GameState.getFirstLevel())
 	{
-		level.LoadFirstLevel(window, gRenderer);
+		level.LoadFirstLevel(window, gRenderer, gFont, &player);
 		GameState.setFirstLevel(false);
 		GameState.setInGame(true);
 	}
@@ -17,7 +17,7 @@ void Breakout::OnLoop()
 	
 	if (GameState.getLoadNewLevel())
 	{
-		level.load(window, gRenderer);
+		level.load();
 		GameState.setLoadNewLevel(false);
 	}
 
@@ -27,7 +27,6 @@ void Breakout::OnLoop()
 		if (collisionManager.hasCollided(level.paddle->getRect(), level.ball->getRect()))
 		{
 			(level.ball->m_vector_y -= (2 * level.ball->m_vector_y));
-			//level.ball->m_vector_x -= (2 * level.ball->m_vector_x);
 		}
 
 		for (int i = 0; i < level.rows.size(); i++)

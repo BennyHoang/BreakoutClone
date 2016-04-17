@@ -17,13 +17,7 @@ void Breakout::OnRender()
 	if (GameState.getInGame())
 	{
 		gText.render(850, 0);
-		level.paddle->update();
-		level.ball->update();
-
-		for (int i = 0; i < level.rows.size(); i++)
-			for (int e = 0; e < level.rows[i].size(); e++)
-				level.rows[i][e].update();
-
+		level.updateLevel();
 	}
 
 	//Update the surface
