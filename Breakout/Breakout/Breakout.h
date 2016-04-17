@@ -41,6 +41,7 @@ private:
 	SDL_Renderer* gRenderer = NULL;
 
 	TTF_Font* gFont;
+	TTF_Font* zFont;
 /*
 	Square firkant1;
 	Square firkant2;

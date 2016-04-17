@@ -20,5 +20,15 @@ void Breakout::OnEvent(SDL_Event* Event)
 		return;
 	}
 
+	if (GameState.getInMenu())
+	{
+		if (Event->key.keysym.sym == SDLK_p)
+		{
+			GameState.setInMenu(false);
+			GameState.setFirstLevel(true);
+			GameState.setInGame(true);
+		}
+	}
+
 
 }

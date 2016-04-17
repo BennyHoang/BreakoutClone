@@ -17,11 +17,13 @@ public:
 	~Menu();
 private:
 
-	std::string text = "Gruppe 6";
+	std::string textHeader = "Breakout Clone Gruppe nO. 6";
+	std::string textFooter = "Press \"P\" to play";
 
 	TTF_Font* m_font;
 	SDL_Renderer* m_renderer;
 	SDL_Window* m_window;
-	TextService gTextTexture;
+	TextService gTextTextureHeader;
+	TextService gTextTextureFooter;
 };
 
