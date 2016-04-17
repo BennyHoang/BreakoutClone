@@ -9,7 +9,7 @@ void Breakout::OnRender()
 	//gText.render(0, 50);
 
 
-
+	menu_screen.update();
 	
 	if (GameState.getInGame())
 	{

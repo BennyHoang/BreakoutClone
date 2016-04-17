@@ -17,6 +17,7 @@
 #include "CollisionManager.h"
 #include "Level.h"
 #include "StateManager.h"
+#include "Menu.h"
 
 
 #define SCREEN_WIDTH 1024
@@ -47,6 +48,8 @@ private:
 */
 	TextService gTextTexture;
 	TextService gText;
+
+	Menu menu_screen;
 
 	StateManager GameState;
 

@@ -7,7 +7,9 @@
 #include <vector>
 #include "Paddle.h"
 #include "Ball.h"
-#include "Breakout.h"
+//#include "Breakout.h"
+
+
 
 
 class Level
@@ -26,5 +28,7 @@ public:
 	Ball* ball;
 	Paddle* paddle;
 	int bricks = 0;
+	int SCREEN_HEIGHT = 768;
+	int SCREEN_WIDTH = 1024;
 };
 

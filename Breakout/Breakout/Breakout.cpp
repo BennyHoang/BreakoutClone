@@ -22,6 +22,7 @@ int Breakout::OnExecute() {
 		{
 			
 			SDL_Event Event;
+			menu_screen.init(gRenderer, window, gFont);
 			while (Running)
 			{
 				while (SDL_PollEvent(&Event))
