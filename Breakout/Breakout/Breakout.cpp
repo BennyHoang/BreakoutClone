@@ -6,7 +6,6 @@ Breakout::Breakout() {
 
 int Breakout::OnExecute() {
 
-	//int score = 0;
 	if (OnInit() == false)
 	{
 		printf("failed to init");
@@ -39,10 +38,6 @@ int Breakout::OnExecute() {
 
 	OnCleanup();
 	Score.OpenFile(file);
-	Score.ReadFile(file);
-
-	system("pause");
-
 	return 0;
 }
 

@@ -2,12 +2,6 @@
 
 void Breakout::OnRender()
 {
-	//Get window surface
-	//screenSurface = SDL_GetWindowSurface(window);
-
-	//gTextTexture.render((SCREEN_WIDTH - gTextTexture.getWidth()) / 2, (SCREEN_HEIGHT - gTextTexture.getHeight()) / 2);
-	//gText.render(0, 50);
-
 
 	if (GameState.getInMenu())
 	{
@@ -22,7 +16,6 @@ void Breakout::OnRender()
 
 	//Update the surface
 	SDL_RenderPresent(gRenderer);
-	//SDL_UpdateWindowSurface(window);
 
 
 }

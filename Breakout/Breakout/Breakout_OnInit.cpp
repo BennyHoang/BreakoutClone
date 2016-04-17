@@ -2,13 +2,6 @@
 
 bool Breakout::OnInit()
 {
-	/*if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-		return false;
-	}
-
-	if ((Surf_Display = SDL_SetVideoMode(640, 480, 32, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
-		return false;
-	}*/
 
 	bool success = true;
 
@@ -36,16 +29,6 @@ bool Breakout::OnInit()
 			}
 			else
 			{
-				//Initialize renderer color
-				SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-
-				//Initialize PNG loading
-				int imgFlags = IMG_INIT_PNG;
-				if (!(IMG_Init(imgFlags) & imgFlags))
-				{
-					printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
-					success = false;
-				}
 
 				//Initialize SDL_ttf
 				if (TTF_Init() == -1)
@@ -60,43 +43,14 @@ bool Breakout::OnInit()
 	return success;
 }
 
-SDL_Texture* Breakout::loadTexture(std::string path)
-{
-	//The final texture
-	SDL_Texture* newTexture = NULL;
-
-	//Load image at specified path
-	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
-	if (loadedSurface == NULL)
-	{
-		printf("Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError());
-	}
-	else
-	{
-		//Create texture from surface pixels
-		newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
-		if (newTexture == NULL)
-		{
-			printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
-		}
-
-		//Get rid of old loaded surface
-		SDL_FreeSurface(loadedSurface);
-	}
-
-	return newTexture;
-}
-
 bool Breakout::LoadFont()
 {
 	bool success = true;
 	gFont = TTF_OpenFont("sketchy.ttf", 20);
-	gTextTexture.init(gFont, window, gRenderer);
 	gText.init(gFont, window, gRenderer);
-
 	zFont = TTF_OpenFont("sketchy.ttf", 60);
 
-	if (gFont == NULL)
+	if (gFont == NULL && zFont == NULL)
 	{
 		printf("Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError());
 		success = false;
@@ -104,7 +58,7 @@ bool Breakout::LoadFont()
 	else
 	{
 		Score.ReadFile(file);
-		SDL_Color textColor = { 255, 255, 255, 255};
+		SDL_Color textColor = { 255, 255, 255, 255 };
 		gText.loadFromRenderedText("HIGHSCORE: ", textColor);
 	}
 

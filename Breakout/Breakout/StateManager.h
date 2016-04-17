@@ -1,4 +1,7 @@
 #pragma once
+/*
+	Keeps track of game state
+*/
 class StateManager
 {
 public:

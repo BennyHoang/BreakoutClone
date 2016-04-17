@@ -1,7 +1,6 @@
 #include "Level.h"
 
 
-
 Level::Level()
 {
 }
@@ -14,7 +13,7 @@ Level::~Level()
 	delete ball;
 	ball = NULL;
 }
-
+//Loads first level, used once. 
 void Level::LoadFirstLevel(SDL_Window* window, SDL_Renderer* gRenderer, TTF_Font * font, Player* player, StateManager* gameState)
 {
 	int width = 108;
@@ -34,11 +33,13 @@ void Level::LoadFirstLevel(SDL_Window* window, SDL_Renderer* gRenderer, TTF_Font
 	loadLives();
 }
 
+
 void Level::loadLives()
 {
 	gTextTextureHeader.init(m_font, m_window, m_renderer);
 }
 
+//Updates renderer for all game objects.
 void Level::updateLevel()
 {
 	paddle->update();
@@ -49,7 +50,6 @@ void Level::updateLevel()
 			rows[i][e].update();
 
 	SDL_Color textColor = { 255, 0, 0, 255 };
-	//gText.loadFromRenderedText(std::to_string(score), textColor);
 	std::string lives = "Lives: ";
 	for (int i = 0; i < m_player->getLives(); i++)
 		lives += "<3 ";
@@ -58,7 +58,7 @@ void Level::updateLevel()
 	gTextTextureHeader.render(10, 5);
 
 }
-
+//Loads a new level
 void Level::load()
 {
 	int width = 108;
@@ -72,7 +72,7 @@ void Level::load()
 	row2.clear();
 	row3.clear();
 	bricks = 3 * 9;
-	
+
 	for (int i = 0; i < 9; i++)
 	{
 		Brick brick(m_window, m_renderer, space + (i * (width + space)), heigth_from_top, heigth, width, 00, 00, 255, 255);
@@ -97,6 +97,6 @@ void Level::load()
 	rows.push_back(row1);
 	rows.push_back(row2);
 	rows.push_back(row3);
-	
+
 	m_game_state->setCanShoot();
 }

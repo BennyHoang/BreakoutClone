@@ -5,6 +5,11 @@
 #include <SDL_ttf.h>
 #include <stdio.h>
 
+/*
+	This class keeps tracks of ticks used to calculate FPS in Breakout main class.
+*/
+
+//Almost a copy form lazy foo's timer class
 class LTimer
 {
 public:

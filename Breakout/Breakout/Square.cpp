@@ -21,7 +21,6 @@ void Square::init(SDL_Window* window, SDL_Renderer* gRenderer, int x, int y, int
 	rect.w = width;
 	rect.x = x;
 	rect.y = y;
-	
 }
 
 void Square::setPos(int posX, int posY)

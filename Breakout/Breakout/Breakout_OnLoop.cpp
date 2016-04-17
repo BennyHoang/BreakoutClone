@@ -69,7 +69,6 @@ void Breakout::OnLoop()
 					score++;
 					std::string text = "HIGHSCORE: " + std::to_string(score);
 					SDL_Color textColor = { 255, 255, 255, 255 };
-					//gText.loadFromRenderedText(std::to_string(score), textColor);
 					gText.loadFromRenderedText(text, textColor);
 					Score.SetScore(score);
 				}
@@ -92,7 +91,6 @@ void Breakout::OnLoop()
 				GameState.setInGame(false);
 			}
 		}
-			//level.ball->m_vector_y -= (level.ball->m_vector_y * 2);
 		if (level.ball->getPosX() <= 0 || level.ball->getPosX() >= SCREEN_WIDTH)
 			level.ball->m_vector_x -= (level.ball->m_vector_x * 2);
 
