@@ -72,7 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="..\CodeMap.dgml" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Breakout.h">

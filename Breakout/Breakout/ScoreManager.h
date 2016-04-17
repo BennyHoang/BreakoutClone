@@ -3,6 +3,9 @@
 #include <fstream>
 #include <string>
 
+/*
+	This object handles file I/O and saving score. 
+*/
 
 class ScoreManager
 {

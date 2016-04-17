@@ -10,8 +10,12 @@ void Breakout::OnCleanup()
 	gRenderer = NULL;
 	
 	//Closing font
-	gTextTexture.free();
+	//gTextTexture.free();
+	gText.free();
+	gTextLives.free();
 	TTF_CloseFont(gFont);
+	TTF_CloseFont(zFont);
+	zFont = NULL;
 	gFont = NULL;
 	
 	//Quit SDL subsystems

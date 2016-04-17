@@ -2,12 +2,14 @@
 
 #include "SDL.h"
 
-
+/*
+	This object is parent of Paddle, brick & ball
+*/
 class Square
 {
 public:
 	Square();
-	~Square();
+	virtual ~Square() = 0;
 	void init(SDL_Window * window, SDL_Renderer * gRenderer, int x, int y, int height, int width, int color_r, int color_g, int color_b, int color_alpha);
 	void setPos(int posX, int posY);
 	void setColor(Uint8 r, Uint8 g, Uint8 b, Uint8 opacity);

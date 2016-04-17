@@ -1,11 +1,15 @@
 #pragma once
 #include "Square.h"
 #include "Resource.h"
-
+/*
+* This Class creates a ball object
+* inherits from Squares
+*/
 class Ball :
 	public Square
 {
 public:
+
 	Ball(SDL_Window * window, SDL_Renderer * gRenderer, int x, int y, int color_r, int color_g, int color_b, int color_alpha);
 	void updatePosition();
 	void reset();

@@ -1,6 +1,9 @@
 #pragma once
 
 #include <SDL.h>
+/*
+	This object handles collissions betweeen squares
+*/
 
 class CollisionManager
 {

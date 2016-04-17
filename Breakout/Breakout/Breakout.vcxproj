@@ -170,7 +170,6 @@
     <ClCompile Include="TextService.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\CodeMap.dgml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

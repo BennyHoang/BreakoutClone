@@ -1,4 +1,8 @@
 #pragma once
+
+/*
+	This object handles player data. 
+*/
 class Player
 {
 public:

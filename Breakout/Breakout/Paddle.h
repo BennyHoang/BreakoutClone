@@ -1,6 +1,10 @@
 #pragma once
 #include "Square.h"
 #include <iostream>
+/*
+	This class is used to create a paddle
+	Inherits from Square
+*/
 class Paddle :
 	public Square
 {

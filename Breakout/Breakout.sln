@@ -5,6 +5,11 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Breakout", "Breakout\Breakout.vcxproj", "{44894FE4-90BA-4A91-B245-8779E5C08865}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1133BCF6-6F78-4984-8B69-1E3B61BC0ED3}"
+	ProjectSection(SolutionItems) = preProject
+		CodeMapForBreakOut.dgml = CodeMapForBreakOut.dgml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

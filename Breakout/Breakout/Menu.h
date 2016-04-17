@@ -5,8 +5,10 @@
 #include <stdio.h>
 #include "TextService.h"
 #include <string>
-//#include "Breakout.h"
 
+/*
+	This object handles rendering of main menu screen. Also gets handle by StateManager
+*/
 
 class Menu
 {

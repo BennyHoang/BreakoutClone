@@ -20,12 +20,12 @@
 #include "Menu.h"
 #include "Resource.h"
 #include "LTimer.h"
+/*
+ This is the main object.
+ In this object you will also find main.
+ This object is split into 6 .cpp files
+*/
 
-
-
-
-/*Text Defines*/
-#define TXT_HIGHSCORE "Highscore"
 
 class Breakout {
 private:
@@ -43,12 +43,8 @@ private:
 
 	TTF_Font* gFont;
 	TTF_Font* zFont;
-/*
-	Square firkant1;
-	Square firkant2;
-	Square firkant3;
-*/
-	TextService gTextTexture;
+
+	//TextService gTextTexture;
 	TextService gText;
 	TextService gTextLives;
 
@@ -58,11 +54,7 @@ private:
 
 	StateManager GameState;
 
-	bool once = false;
-
 	int posX = 140;
-	bool load_lvl_one = true;
-
 
 	CollisionManager collisionManager;
 	std::string file = "highscore.txt";
@@ -89,8 +81,6 @@ public:
 	int OnExecute();
 
 	bool OnInit();
-
-	SDL_Texture * loadTexture(std::string path);
 
 	void OnEvent(SDL_Event* Event);
 

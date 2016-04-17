@@ -1,5 +1,10 @@
 #pragma once
 #include "Square.h"
+/*
+	Creates brick objects
+	Inherits from Squares
+*/
+
 class Brick :
 	public Square
 {

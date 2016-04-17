@@ -11,7 +11,13 @@
 #include "Player.h"
 #include "Resource.h"
 #include "StateManager.h"
-//#include "Breakout.h"
+
+/*
+	This level object handles loading initializor of levels and rendering.
+	This object also updates the renderer position elements of the level.
+	Level consist of Paddle, ball and bricks.
+
+*/
 
 
 
@@ -24,17 +30,14 @@ public:
 
 	void LoadFirstLevel(SDL_Window * window, SDL_Renderer * gRenderer, TTF_Font* font, Player* player, StateManager* gameState);
 	void loadLives();
-
 	void updateLevel();
-
-	//void load(SDL_Window * window, SDL_Renderer * gRenderer, std::vector<std::vector<Brick>> rows, Ball & ball, Paddle * paddle);
-
 	void load();
-	std::vector<Brick> row1, row2, row3;
-	std::vector< std::vector<Brick> > rows;
+
 	Ball* ball;
 	Paddle* paddle;
+	std::vector< std::vector<Brick> > rows;
 	int bricks = 0;
+
 
 private: 
 	StateManager* m_game_state;
@@ -43,5 +46,7 @@ private:
 	SDL_Window* m_window;
 	TextService gTextTextureHeader;
 	Player* m_player;
+	std::vector<Brick> row1, row2, row3;
+	
 };
 

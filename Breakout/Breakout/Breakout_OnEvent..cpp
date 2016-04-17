@@ -31,9 +31,6 @@ void Breakout::OnEvent(SDL_Event* Event)
 			}
 		}
 
-
-
-
 		if (GameState.getInMenu())
 		{
 			if (Event->key.keysym.sym == SDLK_p)
@@ -44,6 +41,4 @@ void Breakout::OnEvent(SDL_Event* Event)
 			}
 		}
 	}
-
-	//SDL_PumpEvents();
 }
