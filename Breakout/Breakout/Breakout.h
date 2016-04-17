@@ -19,6 +19,7 @@
 #include "StateManager.h"
 #include "Menu.h"
 #include "Resource.h"
+#include "LTimer.h"
 
 
 
@@ -68,6 +69,19 @@ private:
 	ScoreManager Score;
 	int score = 0;
 	Level level;
+
+	const int SCREEN_FPS = 60;
+	const int SCREEN_TICK_PER_FRAME = 1000 / SCREEN_FPS;
+
+	//The frames per second timer
+	LTimer fpsTimer;
+
+	//The frames per second cap timer
+	LTimer capTimer;
+
+	//Start counting frames per second
+	int countedFrames = 0;
+
 
 public:
 	Breakout();

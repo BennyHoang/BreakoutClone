@@ -160,6 +160,7 @@
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LTimer.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="TextService.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\CodeMap.dgml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +179,7 @@
     <ClInclude Include="Brick.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="LTimer.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Player.h" />

@@ -26,7 +26,7 @@ void Breakout::OnEvent(SDL_Event* Event)
 
 			if (Event->key.keysym.sym == SDLK_SPACE && GameState.canShoot())
 			{
-				level.ball->updateVector(0, 1);
+				level.ball->updateVector(0, 8);
 				return;
 			}
 		}

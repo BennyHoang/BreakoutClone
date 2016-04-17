@@ -2,6 +2,8 @@
 
 void Breakout::OnLoop()
 {
+	//Start cap timer
+	capTimer.start();
 	//Clear screen
 	SDL_SetRenderDrawColor(gRenderer, 0x02, 0x02, 0x02, 0xFF);
 	SDL_RenderClear(gRenderer);
@@ -40,11 +42,11 @@ void Breakout::OnLoop()
 			offset -= offset * 2;
 			if (offset > 1)
 			{
-				offset = 1;
+				offset = 3;
 			}
 			else if (offset < -1)
 			{
-				offset = -1;
+				offset = -3;
 			}
 			else
 			{
@@ -96,5 +98,18 @@ void Breakout::OnLoop()
 
 		level.paddle->setPos(posX, level.paddle->getPosY());
 		
+	}
+
+	float avgFPS = countedFrames / (fpsTimer.getTicks() / 1000.f);
+	if (avgFPS > 2000000)
+	{
+		avgFPS = 0;
+	}
+
+	int frameTicks = capTimer.getTicks();
+	if (frameTicks < SCREEN_TICK_PER_FRAME)
+	{
+		//Wait remaining time
+		SDL_Delay(SCREEN_TICK_PER_FRAME - frameTicks);
 	}
 }
