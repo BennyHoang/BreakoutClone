@@ -99,5 +99,8 @@
     <Font Include="lazy.ttf">
       <Filter>Source Files</Filter>
     </Font>
+    <Font Include="Starjedi.ttf">
+      <Filter>Source Files</Filter>
+    </Font>
   </ItemGroup>
 </Project>

@@ -90,7 +90,7 @@ SDL_Texture* Breakout::loadTexture(std::string path)
 bool Breakout::LoadFont()
 {
 	bool success = true;
-	gFont = TTF_OpenFont("sketchy.ttf", 20);
+	gFont = TTF_OpenFont("Starjedi.ttf", 20);
 	gTextTexture.init(gFont, window, gRenderer);
 	gText.init(gFont, window, gRenderer);
 	if (gFont == NULL)
