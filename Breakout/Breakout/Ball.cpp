@@ -26,8 +26,8 @@ void Ball::reset()
 
 void Ball::updateVector(int delta_x, int delta_y)
 {
-	m_vector_x += delta_x;
-	m_vector_y += delta_y;
+	m_vector_x = delta_x;
+	m_vector_y = delta_y;
 }
 
 Ball::~Ball()

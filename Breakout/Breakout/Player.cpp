@@ -32,6 +32,12 @@ bool Player::isAlive()
 	return m_alive;
 }
 
+void Player::newLives()
+{
+	m_lives = 5;
+	m_alive = true;
+}
+
 
 Player::~Player()
 {

@@ -29,7 +29,7 @@ void Level::LoadFirstLevel(SDL_Window* window, SDL_Renderer* gRenderer, TTF_Font
 
 	paddle = new Paddle(window, gRenderer, space + (1 * (width + space)), SCREEN_HEIGHT - 60, heigth, 300, 00, 179, 00, 255);
 	ball = new Ball(window, gRenderer, SCREEN_WIDTH / 2, SCREEN_HEIGHT - 70, 179, 179, 179, 255);
-
+	player->newLives();
 	load();
 	loadLives();
 }
@@ -66,12 +66,13 @@ void Level::load()
 	int heigth = 50;
 	int heigth_from_top = 50;
 
+	ball->reset();
 	rows.clear();
 	row1.clear();
 	row2.clear();
 	row3.clear();
 	bricks = 3 * 9;
-
+	
 	for (int i = 0; i < 9; i++)
 	{
 		Brick brick(m_window, m_renderer, space + (i * (width + space)), heigth_from_top, heigth, width, 00, 00, 255, 255);
@@ -96,6 +97,6 @@ void Level::load()
 	rows.push_back(row1);
 	rows.push_back(row2);
 	rows.push_back(row3);
-	ball->reset();
+	
 	m_game_state->setCanShoot();
 }

@@ -8,6 +8,7 @@ public:
 	int getLives();
 	void updateLives();
 	bool isAlive();
+	void newLives();
 	~Player();
 private:
 	int m_lives = 5;
