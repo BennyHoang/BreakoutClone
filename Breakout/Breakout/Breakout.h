@@ -16,6 +16,7 @@
 #include "Ball.h"
 #include "CollisionManager.h"
 #include "Level.h"
+#include "StateManager.h"
 
 
 #define SCREEN_WIDTH 1024
@@ -39,13 +40,15 @@ private:
 	SDL_Renderer* gRenderer = NULL;
 
 	TTF_Font* gFont;
-
+/*
 	Square firkant1;
 	Square firkant2;
 	Square firkant3;
-
+*/
 	TextService gTextTexture;
 	TextService gText;
+
+	StateManager GameState;
 
 	bool once = false;
 

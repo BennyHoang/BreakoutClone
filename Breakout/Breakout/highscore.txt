@@ -51,3 +51,7 @@ score: 10
 score: 2
 score: 11
 score: 344
+score: 12
+score: 2
+score: 0
+score: 0

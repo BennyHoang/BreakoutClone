@@ -6,14 +6,24 @@ void Breakout::OnLoop()
 	SDL_SetRenderDrawColor(gRenderer, 0x02, 0x02, 0x02, 0xFF);
 	SDL_RenderClear(gRenderer);
 
-	if (load_lvl_one)
+	if (GameState.getFirstLevel())
 	{
 		level.LoadFirstLevel(window, gRenderer);
-		load_lvl_one = false;
+		GameState.setFirstLevel(false);
+		GameState.setInGame(true);
 	}
-	if (level.bricks < 1)level.load(window, gRenderer);
+	if (level.bricks < 1)GameState.setLoadNewLevel(true);
+		
+	
+	if (GameState.getLoadNewLevel())
+	{
+		level.load(window, gRenderer);
+		GameState.setLoadNewLevel(false);
+	}
 
 
+	if (GameState.getInGame())
+	{
 		if (collisionManager.hasCollided(level.paddle->getRect(), level.ball->getRect()))
 		{
 			(level.ball->m_vector_y -= (2 * level.ball->m_vector_y));
@@ -44,6 +54,7 @@ void Breakout::OnLoop()
 		if (level.ball->getPosX() <= 0 || level.ball->getPosX() >= SCREEN_WIDTH)
 			level.ball->m_vector_x -= (level.ball->m_vector_x * 2);
 
-	level.paddle->setPos(posX, level.paddle->getPosY());
-	level.ball->updatePosition();
+		level.paddle->setPos(posX, level.paddle->getPosY());
+		level.ball->updatePosition();
+	}
 }

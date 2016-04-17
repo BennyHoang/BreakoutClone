@@ -16,7 +16,7 @@ bool StateManager::getInMenu()
 	return m_in_menu;
 }
 
-bool StateManager::getFirstLeve()
+bool StateManager::getFirstLevel()
 {
 	return m_first_level;
 }
