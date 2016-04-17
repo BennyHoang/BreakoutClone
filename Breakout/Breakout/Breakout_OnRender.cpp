@@ -12,12 +12,9 @@ void Breakout::OnRender()
 	level.ball->update();
 
 	for (int i = 0; i < level.rows.size(); i++)
-	{
 		for (int e = 0; e < level.rows[i].size(); e++)
-		{
 			level.rows[i][e].update();
-		}
-	}
+
 
 	//Update the surface
 	SDL_RenderPresent(gRenderer);

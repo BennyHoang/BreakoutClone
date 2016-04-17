@@ -2,9 +2,6 @@
 
 Breakout::Breakout() {
 	Running = true;
-	//rows.push_back(firstRow);
-	//rows.push_back(secondRow);
-	//rows.push_back(thirdRow);
 }
 
 int Breakout::OnExecute() {
