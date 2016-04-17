@@ -157,6 +157,7 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Paddle.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="StateManager.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Paddle.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="TextService.h" />

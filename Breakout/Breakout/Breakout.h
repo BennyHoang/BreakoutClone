@@ -52,19 +52,12 @@ private:
 	int posX = 140;
 	bool load_lvl_one = true;
 
-	/*
-	std::vector<Brick> firstRow;
-	std::vector<Brick> secondRow;
-	std::vector<Brick> thirdRow;
-	*/
-	//Paddle* paddle = NULL;
-	//Ball * ball = NULL;
-	Level level;
 
 	CollisionManager collisionManager;
 	std::string file = "highscore.txt";
 	ScoreManager Score;
 	int score = 0;
+	Level level;
 
 public:
 	Breakout();
