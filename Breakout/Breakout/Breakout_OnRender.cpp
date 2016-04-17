@@ -7,14 +7,18 @@ void Breakout::OnRender()
 
 	//gTextTexture.render((SCREEN_WIDTH - gTextTexture.getWidth()) / 2, (SCREEN_HEIGHT - gTextTexture.getHeight()) / 2);
 	//gText.render(0, 50);
-	gText.render(850, 0);
-	level.paddle->update();
-	level.ball->update();
 
-	for (int i = 0; i < level.rows.size(); i++)
-		for (int e = 0; e < level.rows[i].size(); e++)
-			level.rows[i][e].update();
 
+	if (GameState.getInMenu())
+	{
+		menu_screen.update();
+	}
+	
+	if (GameState.getInGame())
+	{
+		gText.render(850, 0);
+		level.updateLevel();
+	}
 
 	//Update the surface
 	SDL_RenderPresent(gRenderer);

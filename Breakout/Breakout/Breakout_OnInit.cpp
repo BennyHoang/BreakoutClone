@@ -93,6 +93,9 @@ bool Breakout::LoadFont()
 	gFont = TTF_OpenFont("sketchy.ttf", 20);
 	gTextTexture.init(gFont, window, gRenderer);
 	gText.init(gFont, window, gRenderer);
+
+	zFont = TTF_OpenFont("sketchy.ttf", 60);
+
 	if (gFont == NULL)
 	{
 		printf("Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError());

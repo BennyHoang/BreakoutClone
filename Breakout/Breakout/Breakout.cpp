@@ -22,6 +22,8 @@ int Breakout::OnExecute() {
 		{
 			
 			SDL_Event Event;
+			menu_screen.init(gRenderer, window, zFont);
+			fpsTimer.start();
 			while (Running)
 			{
 				while (SDL_PollEvent(&Event))

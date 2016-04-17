@@ -16,7 +16,7 @@ bool StateManager::getInMenu()
 	return m_in_menu;
 }
 
-bool StateManager::getFirstLeve()
+bool StateManager::getFirstLevel()
 {
 	return m_first_level;
 }
@@ -29,6 +29,18 @@ bool StateManager::getLoadNewLevel()
 bool StateManager::getGameOver()
 {
 	return m_game_over;
+}
+
+bool StateManager::canShoot()
+{
+	bool returnValue = m_can_shoot;
+	m_can_shoot = false;
+	return returnValue;
+}
+
+void StateManager::setCanShoot()
+{
+	m_can_shoot = true;
 }
 
 void StateManager::setGameOver(bool game_over)

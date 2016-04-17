@@ -16,10 +16,13 @@
 #include "Ball.h"
 #include "CollisionManager.h"
 #include "Level.h"
+#include "StateManager.h"
+#include "Menu.h"
+#include "Resource.h"
+#include "LTimer.h"
 
 
-#define SCREEN_WIDTH 1024
-#define SCREEN_HEIGHT 768
+
 
 /*Text Defines*/
 #define TXT_HIGHSCORE "Highscore"
@@ -39,32 +42,46 @@ private:
 	SDL_Renderer* gRenderer = NULL;
 
 	TTF_Font* gFont;
-
+	TTF_Font* zFont;
+/*
 	Square firkant1;
 	Square firkant2;
 	Square firkant3;
-
+*/
 	TextService gTextTexture;
 	TextService gText;
+	TextService gTextLives;
+
+	Menu menu_screen;
+
+	Player player;
+
+	StateManager GameState;
 
 	bool once = false;
 
 	int posX = 140;
 	bool load_lvl_one = true;
 
-	/*
-	std::vector<Brick> firstRow;
-	std::vector<Brick> secondRow;
-	std::vector<Brick> thirdRow;
-	*/
-	//Paddle* paddle = NULL;
-	//Ball * ball = NULL;
-	Level level;
 
 	CollisionManager collisionManager;
 	std::string file = "highscore.txt";
 	ScoreManager Score;
 	int score = 0;
+	Level level;
+
+	const int SCREEN_FPS = 60;
+	const int SCREEN_TICK_PER_FRAME = 1000 / SCREEN_FPS;
+
+	//The frames per second timer
+	LTimer fpsTimer;
+
+	//The frames per second cap timer
+	LTimer capTimer;
+
+	//Start counting frames per second
+	int countedFrames = 0;
+
 
 public:
 	Breakout();
