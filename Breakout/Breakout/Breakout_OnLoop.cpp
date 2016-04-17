@@ -8,11 +8,11 @@ void Breakout::OnLoop()
 
 	if (GameState.getFirstLevel())
 	{
-		level.LoadFirstLevel(window, gRenderer, gFont, &player);
+		level.LoadFirstLevel(window, gRenderer, gFont, &player, &GameState);
 		GameState.setFirstLevel(false);
 		GameState.setInGame(true);
 	}
-	if (level.bricks < 1)GameState.setLoadNewLevel(true);
+	if (level.bricks < 1 && GameState.getInGame())GameState.setLoadNewLevel(true);
 		
 	
 	if (GameState.getLoadNewLevel())

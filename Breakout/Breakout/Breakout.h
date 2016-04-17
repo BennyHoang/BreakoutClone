@@ -18,10 +18,10 @@
 #include "Level.h"
 #include "StateManager.h"
 #include "Menu.h"
+#include "Resource.h"
 
 
-#define SCREEN_WIDTH 1024
-#define SCREEN_HEIGHT 768
+
 
 /*Text Defines*/
 #define TXT_HIGHSCORE "Highscore"

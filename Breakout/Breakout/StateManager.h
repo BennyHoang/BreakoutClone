@@ -8,6 +8,8 @@ public:
 	bool getFirstLevel();
 	bool getLoadNewLevel();
 	bool getGameOver();
+	bool canShoot();
+	void setCanShoot();
 	void setGameOver(bool game_over);
 	void setInMenu(bool in_menu);
 	void setFirstLevel(bool first_level);
@@ -20,5 +22,6 @@ private:
 	bool m_first_level = false;
 	bool m_load_new_level = false;
 	bool m_game_over = false;
+	bool m_can_shoot = false;
 };
 

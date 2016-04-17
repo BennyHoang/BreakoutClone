@@ -31,6 +31,18 @@ bool StateManager::getGameOver()
 	return m_game_over;
 }
 
+bool StateManager::canShoot()
+{
+	bool returnValue = m_can_shoot;
+	m_can_shoot = false;
+	return returnValue;
+}
+
+void StateManager::setCanShoot()
+{
+	m_can_shoot = true;
+}
+
 void StateManager::setGameOver(bool game_over)
 {
 	m_game_over = game_over;

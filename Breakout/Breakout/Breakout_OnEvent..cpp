@@ -6,19 +6,31 @@ void Breakout::OnEvent(SDL_Event* Event)
 		Running = false;
 	}
 
-	if (Event->key.keysym.sym == SDLK_LEFT ||
-		Event->key.keysym.sym == SDLK_a) {
-		posX -= 20;
-		if (posX < 0) posX = 0;
-		return;
+	if (GameState.getInGame())
+	{
+		if (Event->key.keysym.sym == SDLK_LEFT ||
+			Event->key.keysym.sym == SDLK_a) {
+			posX -= 20;
+			if (posX < 0) posX = 0;
+			return;
+		}
+
+		if (Event->key.keysym.sym == SDLK_RIGHT ||
+			Event->key.keysym.sym == SDLK_d) {
+			posX += 20;
+			if (posX > SCREEN_WIDTH - 300) posX = SCREEN_WIDTH - 300;
+			return;
+		}
+
+		if (Event->key.keysym.sym == SDLK_SPACE && GameState.canShoot())
+		{
+			level.ball->updateVector(0, 1);
+			return;
+		}
 	}
 
-	if (Event->key.keysym.sym == SDLK_RIGHT ||
-		Event->key.keysym.sym == SDLK_d) {
-		posX += 20;
-		if (posX > SCREEN_WIDTH - 300) posX = SCREEN_WIDTH - 300;
-		return;
-	}
+
+
 
 	if (GameState.getInMenu())
 	{

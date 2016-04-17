@@ -9,6 +9,8 @@
 #include "Ball.h"
 #include "TextService.h"
 #include "Player.h"
+#include "Resource.h"
+#include "StateManager.h"
 //#include "Breakout.h"
 
 
@@ -20,7 +22,7 @@ public:
 	Level();
 	~Level();
 
-	void LoadFirstLevel(SDL_Window * window, SDL_Renderer * gRenderer, TTF_Font* font, Player* player);
+	void LoadFirstLevel(SDL_Window * window, SDL_Renderer * gRenderer, TTF_Font* font, Player* player, StateManager* gameState);
 	void loadLives();
 
 	void updateLevel();
@@ -33,10 +35,9 @@ public:
 	Ball* ball;
 	Paddle* paddle;
 	int bricks = 0;
-	int SCREEN_HEIGHT = 768;
-	int SCREEN_WIDTH = 1024;
 
 private: 
+	StateManager* m_game_state;
 	TTF_Font* m_font;
 	SDL_Renderer* m_renderer;
 	SDL_Window* m_window;

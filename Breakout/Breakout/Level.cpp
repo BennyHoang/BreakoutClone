@@ -15,7 +15,7 @@ Level::~Level()
 	ball = NULL;
 }
 
-void Level::LoadFirstLevel(SDL_Window* window, SDL_Renderer* gRenderer, TTF_Font * font, Player* player)
+void Level::LoadFirstLevel(SDL_Window* window, SDL_Renderer* gRenderer, TTF_Font * font, Player* player, StateManager* gameState)
 {
 	int width = 108;
 	int space = 5;
@@ -25,12 +25,13 @@ void Level::LoadFirstLevel(SDL_Window* window, SDL_Renderer* gRenderer, TTF_Font
 	m_renderer = gRenderer;
 	m_window = window;
 	m_player = player;
-
-	load();
-	loadLives();
+	m_game_state = gameState;
 
 	paddle = new Paddle(window, gRenderer, space + (1 * (width + space)), SCREEN_HEIGHT - 60, heigth, 300, 00, 179, 00, 255);
 	ball = new Ball(window, gRenderer, SCREEN_WIDTH / 2, SCREEN_HEIGHT - 70, 179, 179, 179, 255);
+
+	load();
+	loadLives();
 }
 
 void Level::loadLives()
@@ -95,4 +96,6 @@ void Level::load()
 	rows.push_back(row1);
 	rows.push_back(row2);
 	rows.push_back(row3);
+	ball->reset();
+	m_game_state->setCanShoot();
 }

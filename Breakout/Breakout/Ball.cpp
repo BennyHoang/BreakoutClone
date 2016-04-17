@@ -17,6 +17,13 @@ void Ball::updatePosition()
 	this_rect->y = getPosY();
 }
 
+void Ball::reset()
+{
+	setPos(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 150);
+	m_vector_x = 0;
+	m_vector_y = 0;
+}
+
 void Ball::updateVector(int delta_x, int delta_y)
 {
 	m_vector_x += delta_x;
